@@ -1,18 +1,7 @@
-from django.shortcuts import render, redirect
+from rest_framework import viewsets
 from .models import Task
-
+from .serializer import SerieTarea
 # Create your views here.
-def list(request):
-    tasks= Task.objects.all()
-    print(tasks)
-    return render(request, 'lstTareas.html',{"tasks": tasks})
-
-def create(request):
-    task= Task(title=request.POST['title'], description=request.POST['description'])
-    task.save()
-    return redirect('/tasks/')
-
-def delete(request, tareaId):
-    task=Task.objects.get(id=tareaId)
-    task.delete()
-    return redirect('/tasks/')
+class Visor(viewsets.ModelViewSet):
+    serializer_class= SerieTarea
+    queryset= Task.objects.all()

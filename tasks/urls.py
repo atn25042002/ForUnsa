@@ -1,8 +1,12 @@
-from django.urls import path
-from .views import list,create,delete
+from django.urls import path, include
+from rest_framework.documentation import include_docs_urls
+from rest_framework import routers
+from tasks import views
+
+router= routers.DefaultRouter()
+router.register(r'tasks',views.Visor, "tasks")
 
 urlpatterns=[
-    path('', list),
-    path('new/', create, name='create'),
-    path('delete/<int:tareaId>/', delete, name='delete')
+    path("api/v1/", include(router.urls)),
+    path("docs/", include_docs_urls(title="Tasks API"))
 ]
