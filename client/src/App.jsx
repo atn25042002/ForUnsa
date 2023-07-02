@@ -1,21 +1,19 @@
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
-import {TareasPagina} from "./pages/TareasPagina";
-import {FormPagina} from "./pages/FormPagina";
-import { Navegacion } from "./components/Navegacion";
-import { Lateral } from "./components/Lateral";
-import { Toaster } from "react-hot-toast";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Navigation } from "./components/Navigation";
+import { PostPage } from "./pages/PostPage";
+import { PostFormPage} from "./pages/PostFormPage";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Navegacion/>
+
+function App(){
+  return(
+    <BrowserRouter>    
+      <Navigation/>
       <Routes>
-        <Route path="/" element={<Navigate to="/tasks" />} />
-        <Route path="/tasks" element={<TareasPagina/>} />
-        <Route path="/create" element={<FormPagina/>} />
-        <Route path="/tasks/:id" element={<FormPagina/>} />
+        <Route path="" element={<PostPage />}></Route>
+        <Route path="/posts" element={<PostPage />}></Route>
+        <Route path="/posts/:id" element={<PostFormPage />}></Route>
+        <Route path="/posts-create" element={<PostFormPage />}></Route>
       </Routes>
-      <Toaster/> 
     </BrowserRouter>
   );
 }
