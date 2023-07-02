@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllPosts } from "../api/jspost";
+import { getAll } from "../api/jspost";
 import { TarjetaPost } from "./TarjetaPost";
 
 export function ListPost(){
@@ -7,7 +7,7 @@ export function ListPost(){
 
     useEffect (() => {
         async function loadPosts(){
-            const res = await getAllPosts();
+            const res = await getAll('post');
             setPosts(res.data);
         }
         loadPosts();

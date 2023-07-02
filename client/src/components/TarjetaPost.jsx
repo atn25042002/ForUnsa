@@ -4,9 +4,9 @@ export function TarjetaPost({post}) {
     const navigate= useNavigate()
 
     return(
-        <div key={post.id} href={"posts/" + post.id}
+        <div key={post.id}
             onClick={()=>{
-                navigate('/posts/' + post.id)
+                navigate('/post/' + post.id)
             }}
         >
             <h3>{post.title}</h3>

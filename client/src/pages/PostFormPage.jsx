@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { createPosts,deletePost, getPost, updatePost } from "../api/jspost";
+import { create,deletePost, getOnly, update } from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function PostFormPage() {
@@ -9,18 +9,18 @@ export function PostFormPage() {
     const params= useParams();
 
     const onSubmit = handleSubmit(async data => {
-        navigate('/posts');
+        navigate('/post');
         if(params.id){
-            await updatePost(params.id, data);
+            await update('post',params.id, data);
         } else{
-            await createPosts(data);
+            await create('post',data);
         }
     })
 
     useEffect(()=>{         
         async function loadPost(){
             if(params.id){
-                const res= await getPost(params.id);
+                const res= await getOnly('post',params.id);
                 setValue('title', res.data.title);
                 setValue('content', res.data.content);
             }
@@ -47,7 +47,7 @@ export function PostFormPage() {
             {params.id && <button onClick={ async () => {
                 const accepted= window.confirm('¿Estas seguro?')
                 if(accepted){
-                    await deletePost(params.id);
+                    await deletePost('post',params.id);
                     navigate('/posts')
                 }
             }} >Eliminar publicación</button>}

@@ -10,9 +10,9 @@ function App(){
       <Navigation/>
       <Routes>
         <Route path="" element={<PostPage />}></Route>
-        <Route path="/posts" element={<PostPage />}></Route>
-        <Route path="/posts/:id" element={<PostFormPage />}></Route>
-        <Route path="/posts-create" element={<PostFormPage />}></Route>
+        <Route path="/post" element={<PostPage />}></Route>
+        <Route path="/post/:id" element={<PostFormPage />}></Route>
+        <Route path="/post-create" element={<PostFormPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
