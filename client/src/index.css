@@ -1,6 +1,196 @@
-/*Aqui es el css*/
-#postzone{
-  background-color: aqua;
-  width: 60%;
-  padding: 0px 5px 0px 5px;
+/*Aqui es el css - Pos Principal*/
+.postContainer{
+  display:flex;
+  flex-direction:column;
+}
+.postContainerf1{
+  display:flex;
+  justify-content:space-around;
+}
+.fotoPerfil{
+  display:flex;
+  flex-grow:1;
+}
+.derechaFoto{
+  display:flex;
+  flex-direction:column;
+  flex-grow:1;
+}
+.topicosContainer{
+  display:flex;
+  justify-content:space-between;
+}
+.NombreFecha{
+  display:flex;
+  justify-content:space-between;
+}
+
+
+
+.postContainerf3{
+  display:flex;
+
+}
+.postContainerf4{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.postContainerf5{
+  display:flex;
+  justify-content:space-between;
+}
+.likes{
+  display:flex;
+  flex-grow:1;
+}
+.derechaLike{
+  display:flex;
+  flex-grow:1;
+}
+.likes{
+  display:flex;
+  justify-content:space-around;
+}
+.derechaLike{
+  display:flex;
+  justify-content:space-around;
+}
+
+/*el documento ocupara toda la pagina - Estilos3.css*/
+html, body{
+  height:100%;
+  overflow-y:hidden;
+}
+
+.containerGeneral{
+  display:flex;
+  flex-direction:column;
+  height:95%;
+  margin:0;
+  padding:0;
+  overflow-y:hidden;
+}
+
+div{
+  border:ridge;
+}
+
+.header{
+  display:flex;
+  justify-content:space-around;
+}
+.cuerpo{
+  display:flex;
+  justify-content:space-evenly;
+  height:100%;
+}
+.leftColumn{
+  display:flex;
+  flex-direction:column;
+  flex-grow:1;
+  max-width:25%;
+}
+.midColumn{
+  display:flex;
+  flex-direction:column;
+  overflow:scroll;
+  flex-grow:1;
+  max-width:45%;
+}
+.rightColum{
+  display:flex;
+  flex-direction:column;
+  max-width:30%;
+  flex-grow:1;
+}
+.midcolumHeader{
+  position:sticky;
+  top:0;
+}
+.topMedio{
+  display:flex;
+  justify-content:space-around;
+}
+.subTopMedio{
+  display:flex;
+  justify-content:space-around;
+}
+.botMedio{
+  display:flex;
+  flex-direction:column;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+}
+.logo{
+  display:flex;
+  flex-grow:1;
+  justify-content:center;
+
+}
+.interirLog{
+  display:flex;
+  justify-content:center;
+  height:100%;
+}
+.LogoForUnsa{
+  display:flex;
+  align-items:center;
+}
+.busqueda{
+  display:flex;
+  flex-grow:1;
+  justify-content:center;
+
+}
+.busquedaBarra{
+  display:flex;
+  align-items:center;
+  width:100%;
+}
+.iconos{
+  display:flex;
+  flex-grow:1;
+  justify-content:center;
+}
+.interiorIcones{
+  display:flex;
+  width:65%;
+  justify-content:space-around;
+
+}
+/*Tambien podriamos usar align-self:center*/
+.i{
+  display:flex;
+  align-self:center;
+}
+.busquedaTop{
+  width:85%;
+}
+.columnside{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+.containerPreguntas{
+  overflow:scroll;
+}
+.preguntasFrecuentas{
+  position:sticky;
+  top:0;
+}
+.tree{
+  list-style:None;
+}
+.listadoPost{
+  height:50%;
+}
+.listadoPostDetalle{
+  height:100%;
+}
+.comunicados{
+  height:50%;
 }
