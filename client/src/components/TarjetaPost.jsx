@@ -4,14 +4,10 @@ export function TarjetaPost({post}) {
     const navigate= useNavigate()
 
     return(
-        <div class="postContainer" key={post.id}
-            onClick={()=>{
-                navigate('/post/' + post.id)
-            }}
-        >
+        <div class="postContainer" key={post.id}>
             <div class="postContainerf1">
               <div class="fotoPerfil">
-                foto
+                {post.img}
               </div>
               <div class="derechaFoto">
                 <div class="topicosContainer">
@@ -24,15 +20,19 @@ export function TarjetaPost({post}) {
                 </div>
                 <div class="NombreFecha">
                   <div class="nombre">
-                    Henry Galvez Q.
+                    Henry Galvez Q. - User: {post.user}
                   </div>
                   <div class="fechaPublicacion">
-                    Lun 11:39 05/07/23
+                    {post.created_at}
                   </div>
                 </div>
               </div>
             </div>
-            <div class="postContainerf2">
+            <div class="postContainerf2" 
+            onClick={()=>{
+                navigate('/post/' + post.id)
+            }}
+            >
               {post.content}
             </div>
             <div class="postContainerf3">
@@ -71,9 +71,9 @@ export function TarjetaPost({post}) {
 
 export function ListTags({tags},{id}){
     return (
-        <div class="tag">
+        <div class="containerTags">
             {tags.map( tag => (
-                <a key= {tag + id} href="#">{tag}</a>
+                <div class="tags"><a key= {tag + id} href="#">{tag}</a></div>
             ))}
         </div>
     );
