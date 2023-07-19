@@ -1,13 +1,65 @@
+.paraCentrar{
+    display:flex;
+    justify-content:center;
+    padding-top:10px;
+}
 .crearPostContainer{
     display:flex;
     flex-direction:column;
+    border:groove;
+    border-radius:15px;
+    padding:10px;
+
+}
+.crearPostF1{
+    border-bottom:groove;
 }
 .crearPostF2{
     display:flex;
+    justify-content:flex-start;
+    padding-top:10px;
+    padding-bottom:10px;
 }
+.inputTitulo{
+    display:flex;
+    width:100%;
+}
+.inputTitulo>input{
+    width:100%;
+}
+.crearPostF4{
+    display:flex;
+}
+.crearPostF4>textarea{
+    width:98%;
+}
+
 .crearPostF5{
     display:flex;
+    border-top:groove;
+    border-bottom:groove;
 }
 .crearPostF6{
     display:flex;
+}
+.inputsAnadir{
+  font-family: 'Inter',sans-serif;
+  font-size:10px;
+}
+.addImg{
+  background-color:#831617;
+  color:white;
+  border-radius:10px;
+}
+.addDoc{
+  background-color:#831617;
+  color:white;
+  border-radius:10px;
+
+}
+.addEsc{
+  background-color:#831617;
+  color:white;
+  border-radius:10px;
+
 }
