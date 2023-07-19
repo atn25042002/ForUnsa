@@ -4,6 +4,8 @@ export function TarjetaPost({post}) {
     const navigate= useNavigate()
     const fecha = new Date(post.updated_at);
     const fechaFormateada = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric',hour: 'numeric', minute: 'numeric' });
+    const imagen = post.img; 
+
     return(
         <div class="postContainer" key={post.id}>
             <div class="postContainerf1">
@@ -40,7 +42,7 @@ export function TarjetaPost({post}) {
                 <ListTags tags={post.tags} c={post.id}/>
             </div>
             <div class="postContainerf4">
-              <img src="src/static/images/imagenGato.jpg" width="70%" alt="publicacion"/>
+              <img src={imagen} width="70%" alt="publicacion"/>
             </div>
             <div class="postContainerf5">
               <div class="likes">
