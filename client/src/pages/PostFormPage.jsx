@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { create, getOnly, update } from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
+import '../static/css/postForm.css'
 
 export function PostFormPage() {
     const {register, handleSubmit, formState:{errors}, setValue}= useForm();
@@ -29,7 +30,43 @@ export function PostFormPage() {
     },[])
 
     return(
-        <div>
+        <form class ="crearPostContainer" action="" onSubmit={onSubmit}>
+              <div class="crearPostF1">Crear Publicacion</div>
+              <div class="crearPostF2">
+                <div class="labelTitulo">Titulo</div>
+                <div class="inputTitulo">
+                  <input class="inputCrearPost" type="text" placeholder="Titulo" {...register("title",{required: true})}/>
+                </div>
+              </div>
+              <div class="crearPostF3">Contenido</div>
+              <div class="crearPostF4">
+                <textarea placeholder="Escribe aqui tu post" {...register("content",{required: true})}></textarea>
+              </div>
+              <div>
+                <input type="hidden"
+                    value="2" 
+                    {...register("user",{required: true})}/>
+              </div>
+              <div class="crearPostF5">
+                <div class="inputsAnadir">
+                  <div class="addImg">Anadir Iamgen</div>
+                  <div class="addDoc">Anadir Documento</div>
+                  <div class="secctioCrear">Seccion</div>
+                  <div class="addEsc">Mi escuela</div>
+                </div>
+                <div class="creaTags">
+                  <div class="labelTags">Tags</div>
+                  <div class="inputTags">
+                    <input class="inputCrearTag" type="text" placeholder="Crea Tags..."/>
+                  </div>
+                </div>
+              </div>
+              <div class="crearPostF6">
+                <button class="subirCrear" >Subir</button>
+                <button class="subirCancelar">Cancelar</button>
+              </div>
+            </form>
+        /*<div>        
             <form action="" onSubmit={onSubmit}>
                 <input type="text"
                     placeholder="Titulo de la publicación" 
@@ -39,19 +76,19 @@ export function PostFormPage() {
                     {...register("content",{required: true})}
                 ></textarea>
                 <input type="hidden"
-                    value="2" 
+                    value="2"
                     {...register("user",{required: true})}/>
                 <button>Publicar</button>
             </form>
-
             {params.id &&
                 <button onClick={ async () => {
                     const accepted= window.confirm('¿Estas seguro?')
                     if(accepted){
+                        CONFIGURAR EL OCULTO
                         await deletePost('post',params.id);
-                        navigate('/posts')
+                        navigate('/post')
                     }
                 }} >Eliminar publicación</button>}
-        </div>
+        </div>*/
     )
 }

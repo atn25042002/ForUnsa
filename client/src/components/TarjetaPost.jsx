@@ -4,7 +4,8 @@ export function TarjetaPost({post}) {
     const navigate= useNavigate()
     const fecha = new Date(post.updated_at);
     const fechaFormateada = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric',hour: 'numeric', minute: 'numeric' });
-    const imagen = post.img; 
+    const imagen = post.img;
+    
 
     return(
         <div class="postContainer" key={post.id}>
@@ -17,7 +18,11 @@ export function TarjetaPost({post}) {
                   <div class="topicoCurso">
                     {post.title}
                   </div>
-                  <div class="topicoTresPuntos">
+                  <div class="topicoTresPuntos" 
+                    onClick={()=>{
+                        navigate('/post/' + post.id)
+                    }}
+                    >
                     <i class="fa-solid fa-ellipsis"></i>
                   </div>
                 </div>
@@ -31,11 +36,7 @@ export function TarjetaPost({post}) {
                 </div>
               </div>
             </div>
-            <div class="postContainerf2" 
-            onClick={()=>{
-                navigate('/post/' + post.id)
-            }}
-            >
+            <div class="postContainerf2" >
               {post.content}
             </div>
             <div class="postContainerf3">
@@ -76,7 +77,7 @@ export function ListTags({tags},{id}){
     return (
         <div class="containerTags">
             {tags.map( tag => (
-                <div key= {tag + id} class="tags"><a href="#">{tag}</a></div>
+                <div key={tag + id} class="tags"><a href="#">{tag}</a></div>
             ))}
         </div>
     );

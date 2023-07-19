@@ -8,7 +8,8 @@ export function ListPost(){
     useEffect (() => {
         async function loadPosts(){
             const res = await getAll('post');
-            setPosts(res.data);
+            const ord = [...res.data].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+            setPosts(ord);
         }
         loadPosts();
     }, []);
@@ -16,9 +17,7 @@ export function ListPost(){
     return (
         <div id= "lista">
             {posts.map( post => (
-                <div key={post.id}>
-                    <TarjetaPost key={post.id} post={post}/>
-                </div>
+                <TarjetaPost key={post.id} post={post}/>
             ))}
         </div>
     );

@@ -2,6 +2,11 @@
 .postContainer{
   display:flex;
   flex-direction:column;
+  border: groove;
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-right: 5px;
+  padding: 10px 10px 10px 10px;
 }
 .postContainerf1{
   display:flex;
@@ -24,8 +29,6 @@
   display:flex;
   justify-content:space-between;
 }
-
-
 
 .postContainerf3{
   display:flex;
@@ -173,12 +176,12 @@ html, body{
   display:flex;
   width:95%;
 }
-.containerTags div:nth-child(2){
+/*.containerTags div:nth-child(2){
   border:groove;
   border-radius:10px;
   padding:3%;
   width:85%;
-}
+}*/
 .containerTags>div>input{
   width:100%;
   outline:None;
@@ -293,6 +296,7 @@ button>i{
   height:50%;
 }
 .comunicados>img{
+  width: 90%;
   padding:2%;
 }
 a{

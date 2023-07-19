@@ -34,7 +34,7 @@ export function LeftColumn(){
                 </div>
             </div>
             <div class="comunicados">
-                <img src="src/static/images/img_mountains_wide.jpg" width="100%" height="100%" alt=""/>
+                <img src="src/static/images/comunicadoUnsa.jpg" alt="comunicado"/>
             </div>
         </div>
     );

@@ -1,6 +1,8 @@
 import { ListPost } from "./ListPost";
+import { useNavigate } from "react-router-dom";
 
 export function MidColumn(){
+  const navigate= useNavigate()
     return(
         <div class="midColumn">
           <div class="midcolumHeader">
@@ -11,7 +13,10 @@ export function MidColumn(){
             <div class="subTopMedio">
               <div>Popular</div>
               <div>Nuevos</div>
-              <div><a href="/post-create">Nuevo Post</a></div>
+              <div onClick={()=>{
+                navigate('/post-create/')
+            }}
+            >Nuevo Post</div>
             </div>
           </div>
           <div class="botMedio">

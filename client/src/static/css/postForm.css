@@ -1,0 +1,13 @@
+.crearPostContainer{
+    display:flex;
+    flex-direction:column;
+}
+.crearPostF2{
+    display:flex;
+}
+.crearPostF5{
+    display:flex;
+}
+.crearPostF6{
+    display:flex;
+}
