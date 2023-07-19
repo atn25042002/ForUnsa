@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PostFormPage} from "./pages/PostFormPage";
 import { Header } from "./components/Header";
-import { BodyPage } from "./components/BodyPage";
+import { BodyPage } from "./pages/BodyPage";
 
 
 function App(){

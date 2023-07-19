@@ -11,7 +11,7 @@ export function MidColumn(){
             <div class="subTopMedio">
               <div>Popular</div>
               <div>Nuevos</div>
-              <div>Nuevo Post</div>
+              <div><a href="/post-create">Nuevo Post</a></div>
             </div>
           </div>
           <div class="botMedio">

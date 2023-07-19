@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { create,deletePost, getOnly, update } from "../api/jspost";
+import { create, getOnly, update } from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
 
 export function PostFormPage() {
@@ -44,13 +44,14 @@ export function PostFormPage() {
                 <button>Publicar</button>
             </form>
 
-            {params.id && <button onClick={ async () => {
-                const accepted= window.confirm('¿Estas seguro?')
-                if(accepted){
-                    await deletePost('post',params.id);
-                    navigate('/posts')
-                }
-            }} >Eliminar publicación</button>}
+            {params.id &&
+                <button onClick={ async () => {
+                    const accepted= window.confirm('¿Estas seguro?')
+                    if(accepted){
+                        await deletePost('post',params.id);
+                        navigate('/posts')
+                    }
+                }} >Eliminar publicación</button>}
         </div>
     )
 }

@@ -1,6 +1,6 @@
-import { LeftColumn } from "./LeftColumn";
-import { MidColumn } from "./MidColumn";
-import { RigthColumn } from "./RigthColumn";
+import { LeftColumn } from "../components/LeftColumn";
+import { MidColumn } from "../components/MidColumn";
+import { RigthColumn } from "../components/RigthColumn";
 
 export function BodyPage(){
     return(

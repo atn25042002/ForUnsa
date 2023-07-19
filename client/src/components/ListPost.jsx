@@ -14,9 +14,11 @@ export function ListPost(){
     }, []);
 
     return (
-        <div key={""}>
+        <div id= "lista">
             {posts.map( post => (
-                <TarjetaPost key={post.id} post={post}/>
+                <div key={post.id}>
+                    <TarjetaPost key={post.id} post={post}/>
+                </div>
             ))}
         </div>
     );

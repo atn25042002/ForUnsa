@@ -9,17 +9,13 @@ export const getAll = (ent) => {
 }
 
 export const getOnly = (ent,id) => {
-    return dir.get(`post/${id}`);
+    return dir.get(`${ent}/${id}`);
 }
 
-export const create = (ent, id) => {
-    return dir.post('post/', id);
+export const create = (ent, element) => {
+    return dir.post(`${ent}/`, element);
 }
 
-export const update = (ent,id, post) =>{
-    return dir.put(`post/${id}/`, post)
-}
-
-export const deletePost = (ent, id) =>{
-    
+export const update = (ent,id, element) =>{
+    return dir.put(`${ent}/${id}/`, element);
 }

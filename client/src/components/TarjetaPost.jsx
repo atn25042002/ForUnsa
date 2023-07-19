@@ -2,12 +2,13 @@ import { useNavigate } from "react-router-dom";
 
 export function TarjetaPost({post}) {
     const navigate= useNavigate()
-
+    const fecha = new Date(post.updated_at);
+    const fechaFormateada = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric',hour: 'numeric', minute: 'numeric' });
     return(
         <div class="postContainer" key={post.id}>
             <div class="postContainerf1">
               <div class="fotoPerfil">
-                {post.img}
+              <i class="fa-regular fa-circle-user hover-effect d-none d-md-inline fa-2x" id="login"></i>
               </div>
               <div class="derechaFoto">
                 <div class="topicosContainer">
@@ -20,10 +21,10 @@ export function TarjetaPost({post}) {
                 </div>
                 <div class="NombreFecha">
                   <div class="nombre">
-                    Henry Galvez Q. - User: {post.user}
+                    User: {post.user}
                   </div>
                   <div class="fechaPublicacion">
-                    {post.created_at}
+                    {fechaFormateada}
                   </div>
                 </div>
               </div>
@@ -73,7 +74,7 @@ export function ListTags({tags},{id}){
     return (
         <div class="containerTags">
             {tags.map( tag => (
-                <div class="tags"><a key= {tag + id} href="#">{tag}</a></div>
+                <div key= {tag + id} class="tags"><a href="#">{tag}</a></div>
             ))}
         </div>
     );
