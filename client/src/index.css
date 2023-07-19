@@ -54,6 +54,12 @@
   display:flex;
   justify-content:space-around;
 }
+ul{
+  margin-left:-20px;
+}
+li{
+  font-size:10px;
+}
 .derechaLike{
   display:flex;
   justify-content:space-around;
@@ -75,7 +81,6 @@ html, body{
 }
 
 .cuerpo>div{
-  border:ridge;
 }
 
 .header{
@@ -88,26 +93,39 @@ html, body{
   display:flex;
   justify-content:space-evenly;
   height:100%;
+  background-color:#f2e6e6
 }
 .leftColumn{
   display:flex;
   flex-direction:column;
   flex-grow:1;
-  max-width:25%;
+  border:ridge;
+  width:30%;
+  max-width:20%;
   margin:1%;
+  font-family: 'Inter',sans-serif;
+  height:87%;
+  background-color:#ffffff;
+  border-radius:15px;
 }
 .midColumn{
   display:flex;
   flex-direction:column;
-  overflow:scroll;
   flex-grow:1;
-  max-width:45%;
+  width:50%;
+  margin:1%;
+  height:87%;
 }
-.rightColum{
+.rigthColumn{
   display:flex;
   flex-direction:column;
-  max-width:30%;
+  width:30%;
   flex-grow:1;
+  margin:1%;
+  height:87%;
+  border:ridge;
+  background-color:#ffffff;
+  border-radius:15px;
 }
 .midcolumHeader{
   position:sticky;
@@ -116,14 +134,30 @@ html, body{
 .topMedio{
   display:flex;
   justify-content:space-around;
+  border-bottom:groove;
+}
+.topMedio>div{
+  color:#cec5c5
+}
+.topMedio>div:hover{
+  color:#7e2929;
+  border-bottom-color:;
 }
 .subTopMedio{
   display:flex;
   justify-content:space-around;
+  color:#7e2929;
+}
+.subTopMedio>div:hover{
+  background-color:#831617;
+  color:white;
+  border-radius:10px;
 }
 .botMedio{
   display:flex;
   flex-direction:column;
+  height:100%;
+  overflow-y:scroll;
 }
 .tags{
   display:inline;
@@ -133,6 +167,22 @@ html, body{
 
 .containerTags{
   width: 100%;
+  padding:3%;
+}
+.containerTags>div{
+  display:flex;
+  width:95%;
+}
+.containerTags div:nth-child(2){
+  border:groove;
+  border-radius:10px;
+  padding:3%;
+  width:85%;
+}
+.containerTags>div>input{
+  width:100%;
+  outline:None;
+  border:None;
 }
 
 .logo{
@@ -180,6 +230,9 @@ html, body{
   display:flex;
   align-self:center;
 }
+.i:hover{
+  color:#84060c
+}
 .busquedaTop{
   outline:none;
   display:flex;
@@ -203,21 +256,42 @@ button>i{
   height:100%;
 }
 .containerPreguntas{
-  overflow:scroll;
+  overflow-y:hidden;
+  padding:2%;
 }
 .preguntasFrecuentas{
   position:sticky;
   top:0;
+  font-size:16px;
+}
+.containerPreguntas>ul{
+  height:100%;
+  overflow-y:scroll;
 }
 .tree{
   list-style:None;
+  border-bottom:groove;
+  overflow:scroll;
+  height:80%;
+  font-size:10px;
 }
 .listadoPost{
   height:50%;
+  padding:2%;
+}
+.listadoPostTitulo{
+  text-align:center;
+  font-size:16px;
+  font-weight:bold;
+  border-bottom:groove;
+
 }
 .listadoPostDetalle{
   height:100%;
 }
 .comunicados{
   height:50%;
+}
+.comunicados>img{
+  padding:2%;
 }
