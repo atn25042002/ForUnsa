@@ -54,7 +54,7 @@
   display:flex;
   justify-content:space-around;
 }
-ul{
+.containerPreguntas>ul{
   margin-left:-20px;
 }
 li{
@@ -294,4 +294,7 @@ button>i{
 }
 .comunicados>img{
   padding:2%;
+}
+a{
+  text-decoration:none;
 }
