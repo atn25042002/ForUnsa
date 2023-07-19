@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { create, getOnly, update } from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
+import '../static/css/postForm.css'
 
 export function PostFormPage() {
     const {register, handleSubmit, formState:{errors}, setValue}= useForm();
