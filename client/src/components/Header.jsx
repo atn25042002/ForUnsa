@@ -3,7 +3,7 @@ export function Header(){
         <div class="header">
             <div class="logo">
                 <div class="LogoForUnsa">
-                <img src="src/static/images/LogoForUnsa.png" width="70px" alt=""/>
+                <img src="src/static/images/LogoForUnsa.png" width="70px" alt="asd"/>
                 </div>
             </div>
             <div class="busqueda">
