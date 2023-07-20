@@ -24,6 +24,8 @@ export function PostFormPage() {
                 const res= await getOnly('post',params.id);
                 setValue('title', res.data.title);
                 setValue('content', res.data.content);
+                setValue('img', res.data.img);
+                setValue('file',res.data.file);
             }
         }
         loadPost();
@@ -50,8 +52,12 @@ export function PostFormPage() {
               </div>
               <div class="crearPostF5">
                 <div class="inputsAnadir">
-                  <div class="addImg">Anadir Imagen</div>
-                  <div class="addDoc">Anadir Documento</div>
+                  <div class="addImg">
+                    <input type="file" id="imagen" accept="image/*" {...register("img")} />
+                  </div>
+                  <div class="addDoc">
+                    <input type="file" id="pdf" accept=".pdf" {...register("file")} />
+                  </div>
                   <div class="secctioCrear">Seccion</div>
                   <div class="addEsc">Mi escuela</div>
                 </div>
