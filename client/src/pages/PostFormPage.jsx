@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { create, getOnly, update } from "../api/jspost";
+import { create, getOnly, update, subirImagen } from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
 import '../static/css/postForm.css'
 
@@ -11,9 +11,13 @@ export function PostFormPage() {
 
     const onSubmit = handleSubmit(async data => {
         navigate('/post');
+        //const imagen= document.getElementById("inputImagen").files[0]
+        //data.img= "http://127.0.0.1:8000/media/posts/" + imagen.name;
         if(params.id){
             await update('post',params.id, data);
         } else{
+            //console.log(data);
+            //await subirImagen('post', imagen);
             await create('post',data);
         }
     })
@@ -24,8 +28,6 @@ export function PostFormPage() {
                 const res= await getOnly('post',params.id);
                 setValue('title', res.data.title);
                 setValue('content', res.data.content);
-                setValue('img', res.data.img);
-                setValue('file',res.data.file);
             }
         }
         loadPost();
@@ -53,10 +55,10 @@ export function PostFormPage() {
               <div class="crearPostF5">
                 <div class="inputsAnadir">
                   <div class="addImg">
-                    <input type="file" id="imagen" accept="image/*" {...register("img")} />
+                    <input type="file" id="inputImagen" accept="image/*"/>
                   </div>
                   <div class="addDoc">
-                    <input type="file" id="pdf" accept=".pdf" {...register("file")} />
+                    <input type="file" id="inputPdf" accept=".pdf"/>
                   </div>
                   <div class="secctioCrear">Seccion</div>
                   <div class="addEsc">Mi escuela</div>
