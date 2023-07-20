@@ -18,7 +18,7 @@ export function PostFormPage() {
         }
     })
 
-    useEffect(()=>{         
+    useEffect(()=>{
         async function loadPost(){
             if(params.id){
                 const res= await getOnly('post',params.id);
@@ -30,6 +30,7 @@ export function PostFormPage() {
     },[])
 
     return(
+      <div class="paraCentrar">
         <form class ="crearPostContainer" action="" onSubmit={onSubmit}>
               <div class="crearPostF1">Crear Publicacion</div>
               <div class="crearPostF2">
@@ -44,12 +45,12 @@ export function PostFormPage() {
               </div>
               <div>
                 <input type="hidden"
-                    value="2" 
+                    value="2"
                     {...register("user",{required: true})}/>
               </div>
               <div class="crearPostF5">
                 <div class="inputsAnadir">
-                  <div class="addImg">Anadir Iamgen</div>
+                  <div class="addImg">Anadir Imagen</div>
                   <div class="addDoc">Anadir Documento</div>
                   <div class="secctioCrear">Seccion</div>
                   <div class="addEsc">Mi escuela</div>
@@ -66,10 +67,11 @@ export function PostFormPage() {
                 <button class="subirCancelar">Cancelar</button>
               </div>
             </form>
-        /*<div>        
+        </div>
+        /*<div>
             <form action="" onSubmit={onSubmit}>
                 <input type="text"
-                    placeholder="Titulo de la publicación" 
+                    placeholder="Titulo de la publicación"
                     {...register("title",{required: true})}/>
                 <textarea name="" id="" cols="30" rows="10"
                     placeholder="Titulo de la publicación"
