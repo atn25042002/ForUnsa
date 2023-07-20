@@ -50,7 +50,7 @@ export function PostFormPage() {
               </div>
               <div class="crearPostF5">
                 <div class="inputsAnadir">
-                  <div class="addImg">Anadir Iamgen</div>
+                  <div class="addImg">Anadir Imagen</div>
                   <div class="addDoc">Anadir Documento</div>
                   <div class="secctioCrear">Seccion</div>
                   <div class="addEsc">Mi escuela</div>
