@@ -1,17 +1,28 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getAll, getOnly } from "../api/jspost";
+import '../static/css/tarjeta.css'
 
 export function TarjetaPost({post}) {
     const navigate= useNavigate()
     const fecha = new Date(post.updated_at);
     const fechaFormateada = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric',hour: 'numeric', minute: 'numeric' });
     const imagen = post.img;
-    
+
+    const [datos, setDatos]= useState([]);
+    useEffect (() => {
+      async function loadDatos(){
+        const res = await getOnly('user', post.user);
+        setDatos(res.data);
+      }
+      loadDatos();
+    }, []);
 
     return(
         <div class="postContainer" key={post.id}>
             <div class="postContainerf1">
               <div class="fotoPerfil">
-              <i class="fa-regular fa-circle-user hover-effect d-none d-md-inline fa-2x" id="login"></i>
+                <img src={datos.img} class="fotoPerfilTarjeta" alt="foto de Usuario"/>
               </div>
               <div class="derechaFoto">
                 <div class="topicosContainer">
@@ -28,7 +39,7 @@ export function TarjetaPost({post}) {
                 </div>
                 <div class="NombreFecha">
                   <div class="nombre">
-                    User: {post.user}
+                    {datos.username}
                   </div>
                   <div class="fechaPublicacion">
                     {fechaFormateada}
@@ -73,12 +84,12 @@ export function TarjetaPost({post}) {
     );*/
 }
 
-export function ListTags({tags},{id}){
-    return (
-        <div class="containerTags">
-            {tags.map( tag => (
-                <div key={tag + id} class="tags"><a href="#">{tag}</a></div>
-            ))}
-        </div>
-    );
+export function ListTags({tags,id}){
+  return (
+      <div class="containerTags">
+          {tags.map( tag => (
+              <div key={tag + id} class="tags"><a href="#">{tag}</a></div>
+          ))}
+      </div>
+  );
 }

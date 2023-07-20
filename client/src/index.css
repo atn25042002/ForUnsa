@@ -10,11 +10,12 @@
 }
 .postContainerf1{
   display:flex;
-  justify-content:space-around;
+  justify-content: flex-start;
 }
 .fotoPerfil{
   display:flex;
   flex-grow:1;
+  width: 0px;
 }
 .derechaFoto{
   display:flex;
@@ -24,6 +25,7 @@
 .topicosContainer{
   display:flex;
   justify-content:space-between;
+  font-weight: bold;
 }
 .NombreFecha{
   display:flex;
