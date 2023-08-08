@@ -10,11 +10,28 @@ export function PostFormPage() {
     const params= useParams();
 
     const onSubmit = handleSubmit(async data => {
+      let formdata= new FormData()
+      formdata.append('title', data.title)
+      formdata.append('content', data.content)
+      formdata.append('user', data.user)
+      let campoimg= document.getElementById("inputImagen")
+      if(campoimg.files.length > 0){
+        formdata.append('img', document.getElementById("inputImagen").files[0])
+      }
+
+      const ruta= "http://127.0.0.1:8000/forUnsa/post/"
       navigate('/post');
       if(params.id){
-          await update('post',params.id, data);
+        //await update('post',params.id, data);
+        
       } else{
-        await create('post',data);
+        //await create('post',data);
+        let newpost = await fetch(ruta,{
+          method: 'POST',
+          body: formdata
+        }).then(responde => responde.json).catch(error =>{
+          console.error(error);
+        })
       }
     })
 
