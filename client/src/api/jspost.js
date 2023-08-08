@@ -25,5 +25,5 @@ export const update = (ent,id, element) =>{
 }
 
 export const subirImagen = (ent, element) =>{
-    return dir2.post(`media/`, element);
+    return dir2.post(`media/${ent}`, element);
 }

@@ -14,13 +14,13 @@ export function LoginPage() {
     return(
         <div>     
             <div class="loginBackground">
-                <img src="src/static/images/login-background.png" width="100%" height="100%" alt=""/>
+                <img src="src/static/images/login-background.jpg" width="100%" height="100%" alt=""/>
             </div>
             <form action="" onSubmit={onSubmit}>
                 <div class="login">
                     <h3>Bienvenido</h3>
                     <p><strong>"Un lugar para compartir conocimientos"</strong></p>
-                    <img src="src/static/images/unsa.png" width="40%" height="40%" alt=""/>
+                    <img src="src/static/images/unsa.jpg" width="40%" height="40%" alt=""/>
                     <h1></h1>
                     <div class="buttonLogin"></div>
                     <button>Acceder con cuenta institucional</button>

@@ -10,16 +10,12 @@ export function PostFormPage() {
     const params= useParams();
 
     const onSubmit = handleSubmit(async data => {
-        navigate('/post');
-        //const imagen= document.getElementById("inputImagen").files[0]
-        //data.img= "http://127.0.0.1:8000/media/posts/" + imagen.name;
-        if(params.id){
-            await update('post',params.id, data);
-        } else{
-            //console.log(data);
-            //await subirImagen('post', imagen);
-            await create('post',data);
-        }
+      navigate('/post');
+      if(params.id){
+          await update('post',params.id, data);
+      } else{
+        await create('post',data);
+      }
     })
 
     useEffect(()=>{
@@ -35,7 +31,7 @@ export function PostFormPage() {
 
     return(
       <div class="paraCentrar">
-        <form class ="crearPostContainer" action="" onSubmit={onSubmit}>
+        <form class ="crearPostContainer" action="" onSubmit={onSubmit} encType="multipart/form-data">
               <div class="crearPostF1">Crear Publicacion</div>
               <div class="crearPostF2">
                 <div class="labelTitulo">Titulo</div>
@@ -49,13 +45,13 @@ export function PostFormPage() {
               </div>
               <div>
                 <input type="hidden"
-                    value="2"
+                    value="3"
                     {...register("user",{required: true})}/>
               </div>
               <div class="crearPostF5">
                 <div class="inputsAnadir">
                   <div class="addImg">
-                    <input type="file" id="inputImagen" accept="image/*"/>
+                    <input type="file" id="inputImagen" name="inputImagen" accept="image/*"/>
                   </div>
                   <div class="addDoc">
                     <input type="file" id="inputPdf" accept=".pdf"/>
