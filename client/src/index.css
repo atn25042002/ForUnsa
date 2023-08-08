@@ -14,21 +14,27 @@
   justify-content: flex-start;
 }
 .fotoPerfil{
-  display:flex;
-  flex-grow:1;
-  width: 0px;
+}
+.fotoPerfil>img{
+  width:50px;
 }
 .derechaFoto{
+  width:100%;
   display:flex;
   flex-direction:column;
-  flex-grow:1;
+  margin-left:1%;
 }
 .topicosContainer{
   display:flex;
   justify-content:space-between;
   font-weight: bold;
+  border-bottom:groove;
+}
+.topicoTresPuntos{
+  color:#831617;
 }
 .NombreFecha{
+  color: #831617;
   display:flex;
   justify-content:space-between;
 }
