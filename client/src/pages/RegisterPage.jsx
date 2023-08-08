@@ -1,6 +1,3 @@
-import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
-import emailjs from 'emailjs-com';
 import React, { useState } from 'react';
 import axios from 'axios'
 

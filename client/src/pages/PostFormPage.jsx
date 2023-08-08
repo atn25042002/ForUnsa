@@ -20,8 +20,12 @@ export function PostFormPage() {
       formdata.append('content', data.content)
       formdata.append('user', data.user)
       let campoimg= document.getElementById("inputImagen")
+      let campopdf= document.getElementById("inputPdf")
       if(campoimg.files.length > 0){
-        formdata.append('img', document.getElementById("inputImagen").files[0])
+        formdata.append('img', campoimg.files[0])
+      }
+      if(campopdf.files.length > 0){
+        formdata.append('file', campopdf.files[0])
       }
 
       let ruta= "http://127.0.0.1:8000/forUnsa/post/"
@@ -37,6 +41,7 @@ export function PostFormPage() {
         })        
       } else{
         //await create('post',formdata);
+        console.log(formdata)
         let newpost = await fetch(ruta,{
           method: 'POST',
           body: formdata
@@ -52,6 +57,7 @@ export function PostFormPage() {
                 const res= await getOnly('post',params.id);
                 setValue('title', res.data.title);
                 setValue('content', res.data.content);
+                setValue('user', res.data.user);  
             }
         }
         loadPost();
@@ -79,7 +85,7 @@ export function PostFormPage() {
               <div class="crearPostF5">
                 <div class="inputsAnadir">
                   <div class="addImg">
-                    <input type="file" id="inputImagen" name="inputImagen" accept="image/*"/>
+                    <input type="file" id="inputImagen" accept="image/*"/>
                   </div>
                   <div class="addDoc">
                     <input type="file" id="inputPdf" accept=".pdf"/>
