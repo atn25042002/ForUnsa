@@ -1,5 +1,6 @@
 /*Aqui es el css - Pos Principal*/
 .postContainer{
+  background-color:#ffffff;
   display:flex;
   flex-direction:column;
   border: groove;
@@ -156,7 +157,9 @@ html, body{
 .subTopMedio>div:hover{
   background-color:#831617;
   color:white;
-  border-radius:10px;
+  padding-left:8px;
+  padding-right:8px;
+  border-radius:15px;
 }
 .botMedio{
   display:flex;
