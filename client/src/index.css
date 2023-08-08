@@ -1,5 +1,6 @@
 /*Aqui es el css - Pos Principal*/
 .postContainer{
+  background-color:#ffffff;
   display:flex;
   flex-direction:column;
   border: groove;
@@ -13,21 +14,27 @@
   justify-content: flex-start;
 }
 .fotoPerfil{
-  display:flex;
-  flex-grow:1;
-  width: 0px;
+}
+.fotoPerfil>img{
+  width:50px;
 }
 .derechaFoto{
+  width:100%;
   display:flex;
   flex-direction:column;
-  flex-grow:1;
+  margin-left:1%;
 }
 .topicosContainer{
   display:flex;
   justify-content:space-between;
   font-weight: bold;
+  border-bottom:groove;
+}
+.topicoTresPuntos{
+  color:#831617;
 }
 .NombreFecha{
+  color: #831617;
   display:flex;
   justify-content:space-between;
 }
@@ -156,7 +163,9 @@ html, body{
 .subTopMedio>div:hover{
   background-color:#831617;
   color:white;
-  border-radius:10px;
+  padding-left:8px;
+  padding-right:8px;
+  border-radius:15px;
 }
 .botMedio{
   display:flex;
