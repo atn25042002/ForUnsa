@@ -9,6 +9,11 @@ export function PostFormPage() {
     const navigate= useNavigate();
     const params= useParams();
 
+    const onCancelar = () => {
+      // Redirigir a la página principal
+      navigate('/post');
+    };
+
     const onSubmit = handleSubmit(async data => {
       let formdata= new FormData()
       formdata.append('title', data.title)
@@ -19,13 +24,19 @@ export function PostFormPage() {
         formdata.append('img', document.getElementById("inputImagen").files[0])
       }
 
-      const ruta= "http://127.0.0.1:8000/forUnsa/post/"
+      let ruta= "http://127.0.0.1:8000/forUnsa/post/"
       navigate('/post');
       if(params.id){
         //await update('post',params.id, data);
-        
+        ruta+= params.id + "/"
+        let newpost = await fetch(ruta,{
+          method: 'PUT',
+          body: formdata
+        }).then(responde => responde.json).catch(error =>{
+          console.error(error);
+        })        
       } else{
-        //await create('post',data);
+        //await create('post',formdata);
         let newpost = await fetch(ruta,{
           method: 'POST',
           body: formdata
@@ -84,8 +95,8 @@ export function PostFormPage() {
                 </div>
               </div>
               <div class="crearPostF6">
-                <button class="subirCrear" >Subir</button>
-                <button class="subirCancelar">Cancelar</button>
+                <button type="submit" class="subirCrear" >Subir</button>
+                <button type="button" class="subirCancelar" onClick={onCancelar}>Cancelar</button>
               </div>
             </form>
         </div>
