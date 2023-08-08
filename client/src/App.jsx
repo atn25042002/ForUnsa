@@ -3,6 +3,7 @@ import { PostFormPage} from "./pages/PostFormPage";
 import { Header } from "./components/Header";
 import { BodyPage } from "./pages/BodyPage";
 import { LoginPage } from "./pages/LoginPage";
+import { Register } from "./pages/RegisterPage";
 
 
 function App({logeado}){
@@ -12,7 +13,7 @@ function App({logeado}){
 
         <Header/>
         <Routes>
-          <Route path="" element={<BodyPage />}></Route>
+          <Route path="" element={<Register />}></Route>
           <Route path="/post" element={<BodyPage />}></Route>
           <Route path="/post/:id" element={<PostFormPage />}></Route>
           <Route path="/post-create" element={<PostFormPage />}></Route>
