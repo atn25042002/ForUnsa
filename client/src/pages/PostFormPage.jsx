@@ -103,6 +103,14 @@ export function PostFormPage() {
               <div class="crearPostF6">
                 <button type="submit" class="subirCrear" >Subir</button>
                 <button type="button" class="subirCancelar" onClick={onCancelar}>Cancelar</button>
+                {params.id &&
+                <button type="button" class="subirCancelar" onClick={ async () => {
+                    const accepted= window.confirm('¿Estas seguro?')
+                    if(accepted){
+                        await deletePost('post',params.id);
+                        navigate('/post')
+                    }
+                }} >Eliminar publicación</button>}
               </div>
             </form>
         </div>
