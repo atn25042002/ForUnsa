@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { create, getOnly, update, subirImagen } from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
 import '../static/css/postForm.css'
+import { ListTags } from "../components/ListTag";
 
 export function PostFormPage() {
     const {register, handleSubmit, formState:{errors}, setValue}= useForm();
@@ -21,6 +22,17 @@ export function PostFormPage() {
       formdata.append('user', data.user)
       let campoimg= document.getElementById("inputImagen")
       let campopdf= document.getElementById("inputPdf")
+
+      //Extrae el tag
+      const tagInput = document.getElementById('TagInput');
+      const opciones = document.getElementById('opciones');
+      const valorSeleccionado = tagInput.value;      
+      for (let i = 0; i < opciones.options.length; i++) {
+        if (opciones.options[i].value === valorSeleccionado) {
+          formdata.append('tags', i)
+        }
+      }
+
       if(campoimg.files.length > 0){
         formdata.append('img', campoimg.files[0])
       }
@@ -95,9 +107,7 @@ export function PostFormPage() {
                 </div>
                 <div class="creaTags">
                   <div class="labelTags">Tags</div>
-                  <div class="inputTags">
-                    <input class="inputCrearTag" type="text" placeholder="Crea Tags..."/>
-                  </div>
+                  <ListTags/>
                 </div>
               </div>
               <div class="crearPostF6">
