@@ -49,10 +49,10 @@ export function RegisterPage() {
                 <img src="src/static/images/login-background.jpg" width="100%" height="100%" alt=""/>
             </div>
             <div class="login">
-              <h2>Registro</h2>
                 <h3>Bienvenido</h3>
-                      <img src="src/static/images/unsa.jpg" width="40%" height="40%" alt=""/>
-                      <p><strong>"Un lugar para compartir conocimientos"</strong></p>
+                <p><strong>"Un lugar para compartir conocimientos"</strong></p>
+                <img src="src/static/images/unsa.jpg" width="40%" height="40%" alt=""/> <br></br>
+                      
                 {!registrationCompleted ? (
                   // Mostrar esta porción durante el registro
                   <>

@@ -24,7 +24,7 @@ export function LoginPage() {
                     <h1></h1>
                     <div class="buttonLogin"></div>
                     <button>Acceder con cuenta institucional</button>
-                    <p><a href="#">¿No tiene acceso a su cuenta?</a></p>
+                    <p><a href="/register">¿Aún no tiene una cuenta?</a></p>
                 </div>
             </form>
         </div>
