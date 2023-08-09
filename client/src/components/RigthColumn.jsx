@@ -4,7 +4,7 @@ export function RigthColumn(){
             <div class="columnside">
           <div class="containerTags">
             <div>Buscar por Tag</div>
-            <div>
+            <div class="barraBuscarTag">
               <input type="text" placeholder="Search Tags..." name="search"/>
               <button type="submit">
                 <i class="fa fa-search"></i>
