@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const dir= axios.create({
     baseURL: 'http://127.0.0.1:8000/forUnsa/'
+    //baseURL: 'https://forunsa.onrender.com/forUnsa/'
 })
 
 const dir2= axios.create({

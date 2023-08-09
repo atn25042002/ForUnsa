@@ -29,7 +29,7 @@ export function PostFormPage() {
       const valorSeleccionado = tagInput.value;      
       for (let i = 0; i < opciones.options.length; i++) {
         if (opciones.options[i].value === valorSeleccionado) {
-          formdata.append('tags', i)
+          formdata.append('tags', i + 1)
         }
       }
 
@@ -41,8 +41,10 @@ export function PostFormPage() {
       }
 
       let ruta= "http://127.0.0.1:8000/forUnsa/post/"
+      //let ruta= "https://forunsa.onrender.com/forUnsa/post/"
       navigate('/post');
       if(params.id){
+        console.log(formdata.get('tags'))
         //await update('post',params.id, data);
         ruta+= params.id + "/"
         let newpost = await fetch(ruta,{
@@ -53,7 +55,7 @@ export function PostFormPage() {
         })        
       } else{
         //await create('post',formdata);
-        console.log(formdata)
+        console.log(formdata.get('tags'))
         let newpost = await fetch(ruta,{
           method: 'POST',
           body: formdata
@@ -91,7 +93,7 @@ export function PostFormPage() {
               </div>
               <div>
                 <input type="hidden"
-                    value="3"
+                    value="2"
                     {...register("user",{required: true})}/>
               </div>
               <div class="crearPostF5">
