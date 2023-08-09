@@ -1,9 +1,12 @@
+import logo from "/src/static/images/LogoForUnsa.png";
 export function Header(){
     return(
         <div class="header">
             <div class="logo">
                 <div class="LogoForUnsa">
-                <img src="src/static/images/LogoForUnsa.png" width="70px" alt="asd"/>
+                    <a href="http://localhost:5173/">
+                    <img src={logo} width="70px" alt="logo ForUnsa"/>
+                    </a>
                 </div>
             </div>
             <div class="busqueda">
@@ -19,13 +22,17 @@ export function Header(){
             <div class="iconos">
                 <div class="interiorIcones">
                 <div class="i">
+                    <a href="http://localhost:5173/">
                     <i class="fa-solid fa-house hover-effect d-none d-md-inline"></i>
+                    </a>                    
                 </div>
                 <div class="i">
                     <i class="fa-regular fa-circle-question"></i>
                 </div>
                 <div class="i">
+                    <a href="http://localhost:5173/social">
                     <i class="fa-solid fa-user-group hover-effect  d-none d-md-inline"></i>
+                    </a>
                 </div>
                 <div class="i">
                     <i class="fa-regular fa-message hover-effect  d-none d-md-inline"></i>

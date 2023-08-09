@@ -1,10 +1,11 @@
-import { ListPost } from "./ListPost";
+import { ListPost} from "./ListPost";
+import { ListSocialPost } from "./ListSocialPost";
 import { useNavigate } from "react-router-dom";
 
-export function MidColumn(){
+export function MidColumn(props){
   const navigate= useNavigate()
     return(
-        <div class="midColumn">
+        <div class="midColumn" data-mod={props.mod}>
           <div class="midcolumHeader">
             <div class="topMedio">
               <div>Mi escuela</div>
@@ -20,7 +21,7 @@ export function MidColumn(){
             </div>
           </div>
           <div class="botMedio">
-            <ListPost/>
+            {props.mod ? <ListSocialPost /> : <ListPost />}
           </div>
         </div>
     );
