@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getAll, getOnly } from "../api/jspost";
 import { like } from "../static/js/main.js";
 import '../static/css/tarjeta.css'
+import { TarjetaComentario } from "./TarjetaComentario";
 
 export function TarjetaPost(props) {
     let post= props.post
@@ -23,6 +24,28 @@ export function TarjetaPost(props) {
         setDatos(res.data);
       }
       loadDatos();
+    }, []);
+
+    const [coms, setComs]= useState([]);
+
+    useEffect (() => {
+        async function loadComms(){
+            const res = await getAll('comment');
+            const ord = [...res.data].filter(item => item.posted_on === post.id);
+            setComs(ord);
+        }
+        loadComms();
+    }, []);
+
+    const [users, setUsers]= useState([]);
+
+    useEffect (() => {
+        async function loadUsers(){
+            const res = await getAll('user');
+            const ord = [...res.data];
+            setUsers(ord);
+        }
+        loadUsers();
     }, []);
 
     return(
@@ -83,6 +106,10 @@ export function TarjetaPost(props) {
                 <i class="fa-regular fa-bookmark"></i>
               </div>
             </div>
+
+            <div class="comentarios">
+                <ListComentarios coms={coms} users={users} />
+            </div>
         </div>
     );
     /*return(
@@ -104,6 +131,18 @@ export function ListTags({tags,id}){
       <div class="containerTags">
           {tags.map( tag => (
               <div key={tag + id} class="tags"><a class="numtag" href={"http://localhost:5173/tag/" + tag}>{tag}</a></div>
+          ))}
+      </div>
+  );
+}
+
+export function ListComentarios({coms}){
+  return (
+      <div class="containerTags">
+          {coms.map( com => (
+              <div key={com.id} class="Contentcomment">
+                <TarjetaComentario com={com} />
+              </div>
           ))}
       </div>
   );
