@@ -27,6 +27,18 @@ export async function ChangeTags(){
     }
 }
 
+export function indexTag(){
+  const tagInput = document.getElementById('TagInput');
+  const opciones = document.getElementById('opciones');
+  const valorSeleccionado = tagInput.value;      
+  for (let i = 0; i < opciones.options.length; i++) {
+    if (opciones.options[i].value === valorSeleccionado) {
+      return i + 1;
+    }
+  }
+  return 0;
+}
+
 export async function like(id){
   /*const lkcount= document.getElementById("lk" + id);
   const nlike = parseInt(lkcount.textContent) + 1;

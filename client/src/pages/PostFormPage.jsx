@@ -4,6 +4,7 @@ import { create, getOnly, update, ruta} from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
 import '../static/css/postForm.css'
 import { ListTags } from "../components/ListTag";
+import { indexTag } from "../static/js/main.js";
 
 export function PostFormPage() {
     const {register, handleSubmit, formState:{errors}, setValue}= useForm();
@@ -24,13 +25,17 @@ export function PostFormPage() {
       let campopdf= document.getElementById("inputPdf")
 
       //Extrae el tag
-      const tagInput = document.getElementById('TagInput');
+      /*const tagInput = document.getElementById('TagInput');
       const opciones = document.getElementById('opciones');
       const valorSeleccionado = tagInput.value;      
       for (let i = 0; i < opciones.options.length; i++) {
         if (opciones.options[i].value === valorSeleccionado) {
           formdata.append('tags', i + 1)
         }
+      }*/
+      let indice = indexTag;
+      if(indice > 0){
+        formdata.append('tags', indice);
       }
 
       if(campoimg.files.length > 0){

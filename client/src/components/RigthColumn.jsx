@@ -1,12 +1,25 @@
 import { ListTags } from "./ListTag";
-export function RigthColumn(){
+import { indexTag } from "../static/js/main.js";
+import { useNavigate} from "react-router-dom";
+export function RigthColumn(){  
+  const navigate= useNavigate();
+
+  const busqueda = () => {
+    let indice= indexTag();
+    if(indice ==0){
+      window.alert('No es un tag válido');
+      return;
+    }
+    window.location.href = "http://localhost:5173/tag/" + indice;
+  }; 
     return(
         <div class="rigthColumn">
             <div class="columnside">
           <div class="containerTags">
             <div>Buscar por Tag</div>
-            <div>
-              <ListTags/>
+            <div class="barraBuscarTag">
+              <ListTags/>             
+              <i class="fa fa-search" onClick={busqueda}></i>
             </div>
             
             <div class="tags">

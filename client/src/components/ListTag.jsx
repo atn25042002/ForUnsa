@@ -15,14 +15,13 @@ export function ListTags(){
     }, []);
 
     return (
-        <div class="barraBuscarTag" id= "lista">
-            <input name="search" class="inputCrearTag" type="text"  id="TagInput" list="opciones" placeholder="Ingrese Tags..."/>
+        <div class="inputselect" id= "lista">
+            <input class="inputCrearTag" type="text"  id="TagInput" list="opciones" placeholder="Ingrese Tags..."/>
             <datalist id="opciones">
             {tags.map( tag => (
                 <option key={tag.id} value={tag.name}></option>
             ))}
             </datalist>
-            <i class="fa fa-search"></i>
         </div>
     );
 }
