@@ -1,5 +1,4 @@
 import { ListPost} from "./ListPost";
-import { ListSocialPost } from "./ListSocialPost";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from 'react';
 import { ChangeTags } from "../static/js/main.js";
@@ -8,10 +7,10 @@ export function MidColumn(props){
   useEffect(() => {
     ChangeTags();
   }, []);
-
+  //{props.mod ? <ListSocialPost /> : <ListPost />}
   const navigate= useNavigate()
     return(
-        <div class="midColumn" data-mod={props.mod}>
+        <div class="midColumn" id="mid" data-mod={props.mod}>
           <div class="midcolumHeader">
             <div class="topMedio">
               <div>Mi escuela</div>
@@ -27,7 +26,7 @@ export function MidColumn(props){
             </div>
           </div>
           <div class="botMedio">
-            {props.mod ? <ListSocialPost /> : <ListPost />}
+            <ListPost mod={props.mod}/>
           </div>
         </div>
     );

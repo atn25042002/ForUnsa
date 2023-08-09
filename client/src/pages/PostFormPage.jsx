@@ -90,7 +90,7 @@ export function PostFormPage() {
                 const res= await getOnly('post',params.id);
                 setValue('title', res.data.title);
                 setValue('content', res.data.content);
-                setValue('user', res.data.user);  
+                setValue('user', res.data.user); 
             }
         }
         loadPost();
