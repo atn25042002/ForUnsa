@@ -4,6 +4,9 @@ import { RigthColumn } from "../components/RigthColumn";
 import { useParams } from "react-router-dom";
 
 export function BodyPage(props){
+    if(props.do){
+        window.location.href="http://localhost:5173/";
+    }
     const params= useParams();
     return(
         <div class="cuerpo">
