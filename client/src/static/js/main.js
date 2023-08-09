@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { getAll } from "../../api/jspost.js";
-let ruta= "http://127.0.0.1:8000/forUnsa/tag/"
+import { ruta } from "../../api/jspost.js";
 
 export async function ChangeTags(){
     try {
@@ -13,12 +11,15 @@ export async function ChangeTags(){
         }
       
         let data = await newpost.json();
+        data.sort(function(a, b) {
+          return a.id - b.id;
+        });
         const nombres = data.map(item => item.name);
 
         const elementos = document.querySelectorAll('.numtag');
 
         elementos.forEach(elemento => {
-          elemento.textContent= nombres[elemento.textContent]
+          elemento.textContent= nombres[elemento.textContent-1]
         });
     }catch (error){
         console.error('There was a problem with the fetch operation:', error);

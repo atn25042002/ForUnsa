@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { create, getOnly, update} from "../api/jspost";
+import { create, getOnly, update, ruta} from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
 import '../static/css/postForm.css'
 import { ListTags } from "../components/ListTag";
@@ -9,8 +9,6 @@ export function PostFormPage() {
     const {register, handleSubmit, formState:{errors}, setValue}= useForm();
     const navigate= useNavigate();
     const params= useParams();
-    let ruta= "http://127.0.0.1:8000/forUnsa/post/"
-    //let ruta= "https://forunsa.onrender.com/forUnsa/post/"
 
     const onCancelar = () => {
       // Redirigir a la página principal
@@ -42,12 +40,13 @@ export function PostFormPage() {
         formdata.append('file', campopdf.files[0])
       }     
       
+      let dir= ruta;
       navigate('/post');
       if(params.id){
         console.log(formdata.get('tags'))
         //await update('post',params.id, data);
-        ruta+= params.id + "/"
-        let newpost = await fetch(ruta,{
+        dir+= params.id + "/"
+        let newpost = await fetch(dir,{
           method: 'PUT',
           body: formdata
         }).then(responde => responde.json).catch(error =>{
@@ -56,7 +55,7 @@ export function PostFormPage() {
       } else{
         //await create('post',formdata);
         console.log(formdata.get('tags'))
-        let newpost = await fetch(ruta,{
+        let newpost = await fetch(dir,{
           method: 'POST',
           body: formdata
         }).then(responde => responde.json).catch(error =>{
@@ -73,8 +72,9 @@ export function PostFormPage() {
         formdata.append('content', data.content)
         formdata.append('user', data.user)
         formdata.append('state','X')
-        ruta+= params.id + "/"
-        let newpost = await fetch(ruta,{
+        let dir= ruta;
+        dir+= params.id + "/"
+        let newpost = await fetch(dir,{
             method: 'PUT',
             body: formdata
           }).then(responde => responde.json).catch(error =>{
