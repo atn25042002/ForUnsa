@@ -27,8 +27,8 @@ export function MidColumn(props){
               <div>Todos</div>
             </div>
             <div class="subTopMedio">
-              <div>Popular</div>
-              <div>Nuevos</div>
+              <div><a href="http://localhost:5173/popular/" >Popular</a></div>
+              <div><a href="http://localhost:5173/" >Nuevos</a></div>
               {user_email === '' ? (
                 <div>
                   <div onClick={handleShow}>Nuevo Post</div>

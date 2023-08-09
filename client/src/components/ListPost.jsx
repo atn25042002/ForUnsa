@@ -23,6 +23,11 @@ export function ListPost(props){
             }
             mode= 2; //modo doc
             if(props.mod){
+                if(props.mod == "popular"){
+                    filt= ord.sort((a, b) => b.likes_count - a.likes_count);
+                    setPosts(filt);
+                    return;
+                }
                 mode= 1 //modo social
             }
             filt = ord.filter(item => item.post_type === mode && item.state=="A");
