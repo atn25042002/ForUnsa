@@ -1,54 +1,81 @@
-import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
-import emailjs from 'emailjs-com';
 import React, { useState } from 'react';
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
-export function Register() {
-    /* function sendEmail(e){
-        e.preventDefault()
-        emailjs.sendForm('service_lqusn5t','template_4x61mye', e.target,'e6i6V33X_--i4SpPa').then(res=>{
-            alert("Se ha enviado correctamente.");
-            console.log(res);
-        })
-    }*/
-    const [name, setName] = useState('');
+export function RegisterPage() {
+    const navigate = useNavigate();  
+  // User information
+    const [username, setUserName] = useState('');
+    const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [registrationCode, setRegistrationCode] = useState('');
+    // Form Utilites
+    const [inputCode, setInputCode] = useState('');
+    const [registrationCompleted, setRegistrationCompleted] = useState(false);
     
-    const sendEmail = async (e) => {
-        e.preventDefault();
-        try {
-          const response = await axios.post('http://127.0.0.1:8000/forUnsa/email/', {
-            'recipient': email,   // Utiliza el campo de correo electrónico para el destinatario
-            'subject': 'Registro exitoso',  // Asunto del correo
-            'message': `Hola ${name}, tu registro ha sido exitoso.`  // Mensaje personalizado
-          });
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      };
+    const handleRegister = async () => {
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/forUnsa/register_user/', {
+          username: username,
+          password: password,
+          email: email,
+        });
+        setRegistrationCode(response.data.registration_code);
+        setRegistrationCompleted(true);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+  
+    const handleCompleteRegistration = async () => {
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/forUnsa/complete_registration/', {
+          email: email,
+          registrationCode: inputCode,
+        });
+        console.log(response.data.message);
+        window.alert("Verificación realizada correctamente")
+        setTimeout(() => {
+          navigate('/post'); // Redirige a la otra página
+        }, 2500);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
 
     return(
         <div>     
             <div class="loginBackground">
                 <img src="src/static/images/login-background.jpg" width="100%" height="100%" alt=""/>
             </div>
-            <form action="" onSubmit={sendEmail}>
-                <div class="login">
-                    <h3>Bienvenido</h3>
-                    <p><strong>"Un lugar para compartir conocimientos"</strong></p>
-                    <img src="src/static/images/unsa.jpg" width="40%" height="40%" alt=""/>
+            <div class="login">
+              <h2>Registro</h2>
+                <h3>Bienvenido</h3>
+                      <img src="src/static/images/unsa.jpg" width="40%" height="40%" alt=""/>
+                      <p><strong>"Un lugar para compartir conocimientos"</strong></p>
+                {!registrationCompleted ? (
+                  // Mostrar esta porción durante el registro
+                  <>
+                    <label>Username: </label>
+                    <input type="text" id='Username' name='Username' value={username} onChange={(e) => setUserName(e.target.value)}/> 
                     <br></br>
-                    <label>Nickname: </label>
-                    <input type="text" id='name' name='name' value={name} onChange={(e) => setName(e.target.value)}/> 
+                    <label>Contraseña: </label>
+                    <input type="password" id='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/> 
                     <br></br>
                     <label>Correo Institucional: </label>
-                    <input type="text" id='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input type="email" id='email' name='email' placeholder='...@unsa.edu.pe' value={email} onChange={(e) => setEmail(e.target.value)}/>
                     <br></br>
-                    <button>Registrar</button>
-                    <p><a href="#">¿No tiene acceso a su cuenta?</a></p>
-                </div>
-            </form>
+                    <button onClick={handleRegister}>Registrar</button>
+                  </>
+                ) : (
+                  // Mostrar esta porción después del registro
+                  <>
+                    <label>Código de Verificación: </label>
+                    <input type="password" placeholder="Código" value={inputCode} onChange={(e) => setInputCode(e.target.value)} /><br></br>
+                    <button onClick={handleCompleteRegistration}>Verificar</button> <br></br>
+                  </>
+                )}
+              </div>
         </div>
     )
 }
