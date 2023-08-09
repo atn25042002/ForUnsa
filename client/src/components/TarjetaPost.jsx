@@ -67,7 +67,7 @@ export function TarjetaPost({post}) {
             <div class="postContainerf6">
               <br />
               <i class="fas fa-file-pdf pdf-icon"></i>
-              <a href={pdf}>{decodeURIComponent(pdf.substring(33))}</a>
+              <a href={pdf} target="_blank">{decodeURIComponent(pdf.substring(33))}</a>
             </div>}
             <div class="postContainerf5">
               <div class="likes">
