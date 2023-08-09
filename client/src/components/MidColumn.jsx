@@ -2,7 +2,6 @@ import { ListPost} from "./ListPost";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { ChangeTags } from "../static/js/main.js";
-import { user_email } from "./ModalComponent"
 import ModalComponent from "./ModalComponent"
 
 export function MidColumn(props){
@@ -27,9 +26,15 @@ export function MidColumn(props){
               <div>Todos</div>
             </div>
             <div class="subTopMedio">
+<<<<<<< HEAD
               <div><a href="http://localhost:5173/popular/" >Popular</a></div>
               <div><a href="http://localhost:5173/" >Nuevos</a></div>
               {user_email === '' ? (
+=======
+              <div>Popular</div>
+              <div>Nuevos</div>
+              {localStorage.getItem('user_email') === null ? (
+>>>>>>> 5d5e999e0645d64ef176d933cff117aaf12d09d4
                 <div>
                   <div onClick={handleShow}>Nuevo Post</div>
                   <ModalComponent

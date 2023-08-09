@@ -3,8 +3,6 @@ import axios from 'axios'
 import { Modal, Button, Form } from 'react-bootstrap';
 import '../static/css/ModalComponent.css'; 
 
-
-export var user_email = '';
 function ModalComponent({ show, onHide, title, onSubmit }) {
   const [formData, setFormData] = useState({
     password: '',
@@ -25,7 +23,7 @@ function ModalComponent({ show, onHide, title, onSubmit }) {
         email: formData.email,
         password: formData.password
       });
-      user_email = formData.email;
+      localStorage.setItem('user_email', response.data.email)
       console.log('Login successful');
       console.log('Email:', formData.email);
       console.log('Password:', formData.password);
