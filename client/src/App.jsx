@@ -5,7 +5,6 @@ import { BodyPage } from "./pages/BodyPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 
-
 function App({logeado}){
   //if(logeado)
     return(
