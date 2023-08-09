@@ -46,7 +46,7 @@ export function MidColumn(props){
             </div>
           </div>
           <div class="botMedio">
-            <ListPost mod={props.mod}/>
+            <ListPost mod={props.mod} tag={props.tag}/>
           </div>
         </div>
     );

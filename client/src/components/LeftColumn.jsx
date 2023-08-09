@@ -1,3 +1,4 @@
+import comunicado from "/src/static/images/comunicadoUnsa.jpg";
 export function LeftColumn(){
     return(
         <div class="leftColumn">
@@ -67,7 +68,7 @@ export function LeftColumn(){
                 </div>
             </div>
             <div class="comunicados">
-                <img src="src/static/images/comunicadoUnsa.jpg" alt="comunicado"/>
+                <img src={comunicado} alt="comunicado"/>
             </div>
         </div>
     );

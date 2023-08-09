@@ -9,11 +9,17 @@ export function ListPost(props){
         async function loadPosts(){
             const res = await getAll('post');
             const ord = [...res.data].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-            let mode= 2; //modo doc
+            let filt, mode;
+            if(props.tag){
+                filt= ord.filter(item => item.tags[0] == props.tag);
+                setPosts(filt);
+                return;
+            }
+            mode= 2; //modo doc
             if(props.mod){
                 mode= 1 //modo social
             }
-            const filt = ord.filter(item => item.post_type === mode && item.state=="A");
+            filt = ord.filter(item => item.post_type === mode && item.state=="A");
             setPosts(filt);
         }
         loadPosts();

@@ -4,7 +4,8 @@ import { getAll, getOnly } from "../api/jspost";
 import { like } from "../static/js/main.js";
 import '../static/css/tarjeta.css'
 
-export function TarjetaPost({post}) {
+export function TarjetaPost(props) {
+    let post= props.post
     const navigate= useNavigate()
     const fecha = new Date(post.updated_at);
     const fechaFormateada = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric',hour: 'numeric', minute: 'numeric' });
@@ -102,7 +103,7 @@ export function ListTags({tags,id}){
   return (
       <div class="containerTags">
           {tags.map( tag => (
-              <div key={tag + id} class="tags"><a class="numtag" href="#">{tag}</a></div>
+              <div key={tag + id} class="tags"><a class="numtag" href={"http://localhost:5173/tag/" + tag}>{tag}</a></div>
           ))}
       </div>
   );
