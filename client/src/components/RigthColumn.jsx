@@ -46,6 +46,16 @@ export function RigthColumn(){
               <li>Como navegas entre escuelas</li>
               <li>Como navegas entre escuelas</li>
               <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
+              <li>Como navegas entre escuelas</li>
             </ul>
           </div>
         </div>
