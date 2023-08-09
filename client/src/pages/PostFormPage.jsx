@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { create, getOnly, update, subirImagen } from "../api/jspost";
+import { create, getOnly, update} from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
 import '../static/css/postForm.css'
 import { ListTags } from "../components/ListTag";
@@ -9,6 +9,8 @@ export function PostFormPage() {
     const {register, handleSubmit, formState:{errors}, setValue}= useForm();
     const navigate= useNavigate();
     const params= useParams();
+    let ruta= "http://127.0.0.1:8000/forUnsa/post/"
+    //let ruta= "https://forunsa.onrender.com/forUnsa/post/"
 
     const onCancelar = () => {
       // Redirigir a la página principal
@@ -38,10 +40,8 @@ export function PostFormPage() {
       }
       if(campopdf.files.length > 0){
         formdata.append('file', campopdf.files[0])
-      }
-
-      let ruta= "http://127.0.0.1:8000/forUnsa/post/"
-      //let ruta= "https://forunsa.onrender.com/forUnsa/post/"
+      }     
+      
       navigate('/post');
       if(params.id){
         console.log(formdata.get('tags'))
@@ -64,6 +64,25 @@ export function PostFormPage() {
         })
       }
     })
+
+    const onDelete = handleSubmit(async data => {
+      const accepted= window.confirm('¿Estas seguro?')
+      if(accepted){      
+        let formdata= new FormData()
+        formdata.append('title', data.title)
+        formdata.append('content', data.content)
+        formdata.append('user', data.user)
+        formdata.append('state','X')
+        ruta+= params.id + "/"
+        let newpost = await fetch(ruta,{
+            method: 'PUT',
+            body: formdata
+          }).then(responde => responde.json).catch(error =>{
+            console.error(error);
+          })        
+        navigate('/post');
+      }
+    });
 
     useEffect(()=>{
         async function loadPost(){
@@ -116,13 +135,7 @@ export function PostFormPage() {
                 <button type="submit" class="subirCrear" >Subir</button>
                 <button type="button" class="subirCancelar" onClick={onCancelar}>Cancelar</button>
                 {params.id &&
-                <button type="button" class="subirCancelar" onClick={ async () => {
-                    const accepted= window.confirm('¿Estas seguro?')
-                    if(accepted){
-                        await deletePost('post',params.id);
-                        navigate('/post')
-                    }
-                }} >Eliminar publicación</button>}
+                <button type="button" class="subirCancelar" onClick={onDelete} >Eliminar publicación</button>}
               </div>
             </form>
         </div>
