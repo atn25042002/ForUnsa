@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let ruta= 'http://127.0.0.1:8000/forUnsa/';
+export const ruta= 'http://127.0.0.1:8000/forUnsa/';
 //let ruta= 'https://forunsa.onrender.com/forUnsa/'
 
 const dir= axios.create({

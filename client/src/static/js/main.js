@@ -1,8 +1,9 @@
 import { ruta } from "../../api/jspost.js";
 
 export async function ChangeTags(){
+  let dir = ruta + "tag/"
     try {
-        let newpost = await fetch(ruta, {
+        let newpost = await fetch(dir, {
           method: 'GET',
         });
       
