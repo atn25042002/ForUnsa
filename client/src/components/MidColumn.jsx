@@ -1,8 +1,14 @@
 import { ListPost} from "./ListPost";
 import { ListSocialPost } from "./ListSocialPost";
 import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { ChangeTags } from "../static/js/main.js";
 
 export function MidColumn(props){
+  useEffect(() => {
+    ChangeTags();
+  }, []);
+
   const navigate= useNavigate()
     return(
         <div class="midColumn" data-mod={props.mod}>

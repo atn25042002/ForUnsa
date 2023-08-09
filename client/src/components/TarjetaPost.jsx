@@ -97,7 +97,7 @@ export function ListTags({tags,id}){
   return (
       <div class="containerTags">
           {tags.map( tag => (
-              <div key={tag + id} class="tags"><a href="#">{tag}</a></div>
+              <div key={tag + id} class="tags"><a class="numtag" href="#">{tag}</a></div>
           ))}
       </div>
   );
