@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { create, getOnly, update, subirImagen } from "../api/jspost";
 import { useNavigate, useParams } from "react-router-dom";
 import '../static/css/postForm.css'
+import { ListTags } from "../components/ListTag";
 
 export function PostFormPage() {
     const {register, handleSubmit, formState:{errors}, setValue}= useForm();
@@ -20,8 +21,23 @@ export function PostFormPage() {
       formdata.append('content', data.content)
       formdata.append('user', data.user)
       let campoimg= document.getElementById("inputImagen")
+      let campopdf= document.getElementById("inputPdf")
+
+      //Extrae el tag
+      const tagInput = document.getElementById('TagInput');
+      const opciones = document.getElementById('opciones');
+      const valorSeleccionado = tagInput.value;      
+      for (let i = 0; i < opciones.options.length; i++) {
+        if (opciones.options[i].value === valorSeleccionado) {
+          formdata.append('tags', i)
+        }
+      }
+
       if(campoimg.files.length > 0){
-        formdata.append('img', document.getElementById("inputImagen").files[0])
+        formdata.append('img', campoimg.files[0])
+      }
+      if(campopdf.files.length > 0){
+        formdata.append('file', campopdf.files[0])
       }
 
       let ruta= "http://127.0.0.1:8000/forUnsa/post/"
@@ -37,6 +53,7 @@ export function PostFormPage() {
         })        
       } else{
         //await create('post',formdata);
+        console.log(formdata)
         let newpost = await fetch(ruta,{
           method: 'POST',
           body: formdata
@@ -52,6 +69,7 @@ export function PostFormPage() {
                 const res= await getOnly('post',params.id);
                 setValue('title', res.data.title);
                 setValue('content', res.data.content);
+                setValue('user', res.data.user);  
             }
         }
         loadPost();
@@ -79,7 +97,7 @@ export function PostFormPage() {
               <div class="crearPostF5">
                 <div class="inputsAnadir">
                   <div class="addImg">
-                    <input type="file" id="inputImagen" name="inputImagen" accept="image/*"/>
+                    <input type="file" id="inputImagen" accept="image/*"/>
                   </div>
                   <div class="addDoc">
                     <input type="file" id="inputPdf" accept=".pdf"/>
@@ -89,14 +107,20 @@ export function PostFormPage() {
                 </div>
                 <div class="creaTags">
                   <div class="labelTags">Tags</div>
-                  <div class="inputTags">
-                    <input class="inputCrearTag" type="text" placeholder="Crea Tags..."/>
-                  </div>
+                  <ListTags/>
                 </div>
               </div>
               <div class="crearPostF6">
                 <button type="submit" class="subirCrear" >Subir</button>
                 <button type="button" class="subirCancelar" onClick={onCancelar}>Cancelar</button>
+                {params.id &&
+                <button type="button" class="subirCancelar" onClick={ async () => {
+                    const accepted= window.confirm('¿Estas seguro?')
+                    if(accepted){
+                        await deletePost('post',params.id);
+                        navigate('/post')
+                    }
+                }} >Eliminar publicación</button>}
               </div>
             </form>
         </div>

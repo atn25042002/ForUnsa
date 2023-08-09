@@ -8,6 +8,7 @@ export function TarjetaPost({post}) {
     const fecha = new Date(post.updated_at);
     const fechaFormateada = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric',hour: 'numeric', minute: 'numeric' });
     const imagen = post.img;
+    const pdf= post.file;
 
     const [datos, setDatos]= useState([]);
     useEffect (() => {
@@ -53,18 +54,26 @@ export function TarjetaPost({post}) {
             <div class="postContainerf3">
                 <ListTags tags={post.tags} c={post.id}/>
             </div>
+            {imagen && 
             <div class="postContainerf4">
-              <img src={imagen} width="70%" alt="publicacion"/>
-            </div>
+              <img src={imagen} width="70%" alt="publicacion"/>              
+            </div>}
+            {pdf &&
+            <div class="postContainerf6">
+              <br />
+              <i class="fas fa-file-pdf pdf-icon"></i>
+              <a href={pdf}>{pdf.substring(33)}</a>
+            </div>}
             <div class="postContainerf5">
               <div class="likes">
-
                 <i class="fa-regular fa-thumbs-up"></i>
+                <div class="likescount">{post.likes_count}</div>
                 <i class="fa-regular fa-thumbs-down"></i>
+                <div class="dislikescount">{post.dislikes_count}</div>
               </div>
               <div class="derechaLike">
                 <i class="fa-regular fa-comment-dots"></i>
-                <div>Ver 23 comentarios</div>
+                <div>Ver {post.comments_count} comentarios</div>
                 <i class="fa-regular fa-bookmark"></i>
               </div>
             </div>
