@@ -1,25 +1,19 @@
+import { ListTags } from "./ListTag";
 export function RigthColumn(){
     return(
         <div class="rigthColumn">
             <div class="columnside">
           <div class="containerTags">
             <div>Buscar por Tag</div>
-            <div class="barraBuscarTag">
-              <input type="text" placeholder="Search Tags..." name="search"/>
-              <button type="submit">
-                <i class="fa fa-search"></i>
-              </button>
+            <div>
+              <ListTags/>
             </div>
+            
             <div class="tags">
-              <a href="">Calculo</a>
-              <a href="">Topicos</a>
-              <a href="">Mitac</a>
-              <a href="">Ing. de Sistemas</a>
-              <a href="">Otros</a>
-              <a href="">Ing. de Sistemas</a>
-
+              <a href="http://localhost:5173/tag/2">Calculo </a>
+              <a href="http://localhost:5173/tag/1">Ing. de Sistemas </a>
+              <a href="http://localhost:5173/tag/3">Programacion </a>
             </div>
-
           </div>
           <div class="containerPreguntas">
             <div class="preguntasFrecuentas">Preguntas Frecuentes</div>
