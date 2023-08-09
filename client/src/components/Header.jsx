@@ -1,5 +1,14 @@
 import logo from "/src/static/images/LogoForUnsa.png";
-export function Header(){
+import { useNavigate} from "react-router-dom";
+
+export function Header(){      
+  const navigate= useNavigate();
+
+  const busqueda = () => {
+    let cadena= document.getElementsByName("search")[0].value;
+    window.location.href = "http://localhost:5173/search/" + cadena;
+  };
+
     return(
         <div class="header">
             <div class="logo">
@@ -12,7 +21,7 @@ export function Header(){
             <div class="busqueda">
                 <div class="busquedaBarra">
                 <input class="busquedaTop" type="text" placeholder="Search..." name="search"/>
-                <button type="submit">
+                <button type="submit" onClick={busqueda}>
                     <i class="fa fa-search"></i>
                 </button>
 

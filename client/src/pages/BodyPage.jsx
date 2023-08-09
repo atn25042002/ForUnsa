@@ -8,7 +8,7 @@ export function BodyPage(props){
     return(
         <div class="cuerpo">
             <LeftColumn/>
-            <MidColumn mod={props.mod} tag={params.id}/>
+            <MidColumn mod={props.mod} tag={params.id} titulo={params.titulo}/>
             <RigthColumn/>
         </div>
     );

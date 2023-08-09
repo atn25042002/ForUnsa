@@ -1,9 +1,7 @@
 import { ListTags } from "./ListTag";
 import { indexTag } from "../static/js/main.js";
-import { useNavigate} from "react-router-dom";
-export function RigthColumn(){  
-  const navigate= useNavigate();
 
+export function RigthColumn(){  
   const busqueda = () => {
     let indice= indexTag();
     if(indice ==0){

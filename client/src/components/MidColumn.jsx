@@ -10,7 +10,11 @@ export function MidColumn(props){
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
-  useEffect(() => {
+  useEffect(() => {    
+    if(props.titulo){
+      console.log(props.titulo)
+      document.getElementsByName("search")[0].value = props.titulo;
+    }
     ChangeTags();
   }, []);
   //{props.mod ? <ListSocialPost /> : <ListPost />}
@@ -46,7 +50,7 @@ export function MidColumn(props){
             </div>
           </div>
           <div class="botMedio">
-            <ListPost mod={props.mod} tag={props.tag}/>
+            <ListPost mod={props.mod} tag={props.tag} titulo={props.titulo}/>
           </div>
         </div>
     );
