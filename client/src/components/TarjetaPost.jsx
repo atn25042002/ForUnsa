@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAll, getOnly } from "../api/jspost";
-import { like } from "../static/js/main.js";
+import { like,dislike } from "../static/js/main.js";
 import '../static/css/tarjeta.css'
 import { TarjetaComentario } from "./TarjetaComentario";
 import ModalComponent from "./ModalComponent"
@@ -21,6 +21,10 @@ export function TarjetaPost(props) {
 
     const onClickLike = () => {
       like(post.id)
+    };
+
+    const onClickDislike = () => {
+      dislike(post.id)
     };
 
     const [datos, setDatos]= useState([]);
@@ -119,9 +123,9 @@ export function TarjetaPost(props) {
             </div>}
             <div class="postContainerf5">
               <div class="likes">
-                <i class="fa-regular fa-thumbs-up" onClick={onClickLike}></i>
+                <i id={"iclk" + post.id} data-active="0" class="fa-regular fa-thumbs-up" onClick={onClickLike}></i>
                 <div class="likescount" id={"lk" + post.id}>{post.likes_count}</div>
-                <i class="fa-regular fa-thumbs-down"></i>
+                <i id={"icdlk" + post.id} data-active="0" class="fa-regular fa-thumbs-down" onClick={onClickDislike}></i>
                 <div class="dislikescount" id={"dlk" + post.id} >{post.dislikes_count}</div>
               </div>
               <div class="derechaLike">

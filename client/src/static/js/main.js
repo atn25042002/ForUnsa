@@ -39,10 +39,48 @@ export function indexTag(){
   return 0;
 }
 
-export async function like(id){
-  /*const lkcount= document.getElementById("lk" + id);
-  const nlike = parseInt(lkcount.textContent) + 1;
-  let formdata= new FormData()
+export function dislike(id){
+  const ic= document.getElementById("icdlk" + id);
+  const lkcount= document.getElementById("dlk" + id);
+  if(ic.getAttribute("data-active") == "0"){
+    if(document.getElementById("iclk" + id).getAttribute("data-active") == "1"){
+      like(id);
+    }
+    const nlike = parseInt(lkcount.textContent) + 1;
+    lkcount.textContent = nlike;
+    lkcount.setAttribute("style","color:#831617");
+    ic.setAttribute("style","color:#831617");
+    ic.setAttribute("data-active", 1);
+  }else{
+    const nlike = parseInt(lkcount.textContent) - 1;
+    lkcount.textContent = nlike;
+    lkcount.removeAttribute("style");
+    ic.removeAttribute("style");
+    ic.setAttribute("data-active", 0);
+  }
+}
+
+export function like(id){
+  const ic= document.getElementById("iclk" + id);
+  const lkcount= document.getElementById("lk" + id);
+  if(ic.getAttribute("data-active") == "0"){
+    if(document.getElementById("icdlk" + id).getAttribute("data-active") == "1"){
+      dislike(id);
+    }
+    const nlike = parseInt(lkcount.textContent) + 1;
+    lkcount.textContent = nlike;
+    lkcount.setAttribute("style","color:#831617");
+    ic.setAttribute("style","color:#831617");
+    ic.setAttribute("data-active", 1);
+  }else{
+    const nlike = parseInt(lkcount.textContent) - 1;
+    lkcount.textContent = nlike;
+    lkcount.removeAttribute("style");
+    ic.removeAttribute("style");
+    ic.setAttribute("data-active", 0);
+  }
+  
+  /*let formdata= new FormData()
       formdata.append('post', id)
       formdata.append('user', 2)
       formdata.append('post_reaction')
@@ -54,20 +92,4 @@ export async function like(id){
   }).then(responde => responde.json).catch(error =>{
     console.error(error);
   })*/
-  console.log("Se dio like a " + id)
 }
-
-/*export async function like(id){
-  const lkcount= document.getElementById("lk" + id);
-  const dlkcount= document.getElementById("dlk" + id);
-  let formdata= new FormData()
-      formdata.append('likes_count', lkcount)
-      formdata.append('dislikes_count', dlkcount)
-  dir+= "post/" + params.id + "/"
-  let newpost = await fetch(dir,{
-    method: 'PATCH',
-    body: formdata
-  }).then(responde => responde.json).catch(error =>{
-    console.error(error);
-  }) 
-} */
