@@ -56,11 +56,25 @@ export function LeftColumn(){
                         <details>
                         <summary>Area de Sociales</summary>
                         <ul>
-                            <li>Agronomía</li>
-                            <li>Ingeniería Pesquera</li>
-                            <li>Ciencias de la Nutrición</li>
-                            <li>Biología</li>
-                            <li>Enfermería</li>
+                            <li>Ciencias de la comunicación</li>
+                            <li>Relaciones Industriales</li>
+                            <li>Psicología</li>
+                            <li>Literatura y Linguística</li>
+                            <li>Filosofía</li>
+                            <li>Artes</li>
+                            <li>Economía</li>
+                            <li>Turismo</li>
+                            <li>Antropología</li>
+                            <li>Trabajo Social</li>
+                            <li>Sociología</li>
+                            <li>Historia</li>
+                            <li>Educación</li>
+                            <li>Finanzas</li>
+                            <li>Contabilidad</li>
+                            <li>Gestión</li>
+                            <li>Banca y Seguros</li>
+                            <li>Marketing</li>
+                            <li>Administración</li>
                         </ul>
                         </details>
                     </li>
