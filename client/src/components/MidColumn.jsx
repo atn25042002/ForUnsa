@@ -28,7 +28,7 @@ export function MidColumn(props){
             <div class="subTopMedio">
               <div><a href="http://localhost:5173/popular/" >Popular</a></div>
               <div><a href="http://localhost:5173/" >Nuevos</a></div>
-              {localStorage.getItem('user_email') === null ? (
+              {localStorage.getItem('user_id') === null ? (
                 <div>
                   <div onClick={handleShow}>Nuevo Post</div>
                   <ModalComponent

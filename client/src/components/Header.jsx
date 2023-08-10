@@ -25,7 +25,7 @@ export function Header() {
   };
   const handleLogOut = () => {
     // Ejecuta la función específica para la opción seleccionada
-    localStorage.removeItem('user_email')
+    localStorage.removeItem('user_id')
     window.location.reload();
   };
   const busqueda = () => {
@@ -70,7 +70,7 @@ export function Header() {
                       <i class="fa-regular fa-message hover-effect  d-none d-md-inline"></i>
                   </div>
                   <div className="dropdown-container" class="i">
-                  {localStorage.getItem('user_email') === null ? (
+                  {localStorage.getItem('user_id') === null ? (
                       <div>
                       <i
                           className="far fa-circle-user hover-effect d-none d-md-inline fa-2x"

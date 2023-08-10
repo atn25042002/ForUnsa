@@ -10,6 +10,7 @@ export function PostFormPage() {
     const {register, handleSubmit, formState:{errors}, setValue}= useForm();
     const navigate= useNavigate();
     const params= useParams();
+    const user= parseInt(localStorage.getItem('user_id'));
 
     const onCancelar = () => {
       // Redirigir a la página principal
@@ -20,7 +21,7 @@ export function PostFormPage() {
       let formdata= new FormData()
       formdata.append('title', data.title)
       formdata.append('content', data.content)
-      formdata.append('user', data.user)
+      formdata.append('user', user)
       let campoimg= document.getElementById("inputImagen")
       let campopdf= document.getElementById("inputPdf")
 
@@ -45,7 +46,7 @@ export function PostFormPage() {
         formdata.append('file', campopdf.files[0])
       }     
       
-      let dir= ruta;
+      let dir= ruta + "post/";
       navigate('/post');
       if(params.id){
         console.log(formdata.get('tags'))
@@ -59,7 +60,6 @@ export function PostFormPage() {
         })        
       } else{
         //await create('post',formdata);
-        console.log(formdata.get('tags'))
         let newpost = await fetch(dir,{
           method: 'POST',
           body: formdata
@@ -75,7 +75,7 @@ export function PostFormPage() {
         let formdata= new FormData()
         formdata.append('title', data.title)
         formdata.append('content', data.content)
-        formdata.append('user', data.user)
+        formdata.append('user', user)
         formdata.append('state','X')
         let dir= ruta;
         dir+= params.id + "/"
@@ -95,7 +95,6 @@ export function PostFormPage() {
                 const res= await getOnly('post',params.id);
                 setValue('title', res.data.title);
                 setValue('content', res.data.content);
-                setValue('user', res.data.user); 
             }
         }
         loadPost();
@@ -116,9 +115,6 @@ export function PostFormPage() {
                 <textarea placeholder="Escribe aqui tu post" {...register("content",{required: true})}></textarea>
               </div>
               <div>
-                <input type="hidden"
-                    value="2"
-                    {...register("user",{required: true})}/>
               </div>
               <div class="crearPostF5">
                 <div class="inputsAnadir">

@@ -15,7 +15,7 @@ export function LoginPage() {
             email: email,
             password: password
           });
-          localStorage.setItem('user_email', response.data.email)
+          localStorage.setItem('user_id', response.data.email)
           setTimeout(() => {
             navigate('/post'); // Redirige a la otra página
           }, 600);

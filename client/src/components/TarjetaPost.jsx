@@ -10,6 +10,7 @@ export function TarjetaPost(props) {
     const [showModal, setShowModal] = useState(false);
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
+    const user= localStorage.getItem('user_id');
 
     let post= props.post
     const navigate= useNavigate()
@@ -64,7 +65,7 @@ export function TarjetaPost(props) {
                   <div class="topicoCurso">
                     {post.title}
                   </div>
-                  {localStorage.getItem('user_email') === null ? (
+                  {localStorage.getItem('user_id') === null ? (
                     <div>
                       <div class="topicoTresPuntos">
                         <i class="fa-solid fa-ellipsis" onClick={handleShow}></i>
@@ -79,7 +80,11 @@ export function TarjetaPost(props) {
                   ) : (
                     <div class="topicoTresPuntos" 
                       onClick={()=>{
-                          navigate('/post/' + post.id)
+                          if(user== post.user){
+                            navigate('/post/' + post.id);
+                          }else{
+                            window.alert("No puedes editar este post");
+                          }
                       }}
                       >
                       <i class="fa-solid fa-ellipsis"></i>
