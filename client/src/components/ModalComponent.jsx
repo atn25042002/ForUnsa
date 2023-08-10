@@ -24,9 +24,7 @@ function ModalComponent({ show, onHide, title, onSubmit }) {
         password: formData.password
       });
       localStorage.setItem('user_email', response.data.email)
-      console.log('Login successful');
-      console.log('Email:', formData.email);
-      console.log('Password:', formData.password);
+      window.location.reload();
     } catch (error) {
       console.error('Error:', error);
     }

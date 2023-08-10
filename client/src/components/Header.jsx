@@ -1,9 +1,32 @@
 import logo from "/src/static/images/LogoForUnsa.png";
-import { useNavigate} from "react-router-dom";
+import '../static/css/Dropdown.css';
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import ModalComponent from "./ModalComponent"
 
 export function Header(){      
   const navigate= useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+    if (event.target.value === 'logout') {
+      handleLogOut();
+    }
+  };
+  
+  const handleIconClick = () => {
+    setIsMenuVisible(!isMenuVisible); // Cambiar la visibilidad del menú al hacer clic en el icono
+  };
+  const handleLogOut = () => {
+    // Ejecuta la función específica para la opción seleccionada
+    localStorage.removeItem('user_email')
+    window.location.reload();
+  };
   const busqueda = () => {
     let cadena= document.getElementsByName("search")[0].value;
     window.location.href = "http://localhost:5173/search/" + cadena;
@@ -46,8 +69,38 @@ export function Header(){
                 <div class="i">
                     <i class="fa-regular fa-message hover-effect  d-none d-md-inline"></i>
                 </div>
-                <div class="i">
-                    <i class="fa-regular fa-circle-user hover-effect d-none d-md-inline fa-2x" id="login"></i>
+                <div className="dropdown-container" class="i">
+                {localStorage.getItem('user_email') === null ? (
+                    <div>
+                    <i
+                        className="far fa-circle-user hover-effect d-none d-md-inline fa-2x"
+                        id="login"
+                        onClick={handleShow} // Agregar el evento de clic al icono
+                    ></i>
+                    <ModalComponent
+                        show={showModal}
+                        onHide={handleClose}
+                        title="Inicie sesión"
+                        content="This is the content of the modal."
+                    />
+                    </div>
+                ) : (
+                    <>
+                    <i
+                        className="far fa-circle-user hover-effect d-none d-md-inline fa-2x"
+                        id="login"
+                        onClick={handleIconClick} // Agregar el evento de clic al icono
+                    ></i>
+                    {/* Mostrar el menú desplegable si isMenuVisible es verdadero */}
+                    {isMenuVisible && (
+                        <select value={selectedOption} onChange={handleSelectChange}>
+                        <option value="">Seleccione una opción</option>
+                        <option value="logout">Salir</option>
+                        <option value="opcion2">Opción 2</option>
+                        </select>
+                    )}
+                    </>
+                )}
                 </div>
                 </div>
             </div>
