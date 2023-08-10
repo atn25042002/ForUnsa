@@ -1,25 +1,30 @@
-export function RigthColumn(){
+import { ListTags } from "./ListTag";
+import { indexTag } from "../static/js/main.js";
+
+export function RigthColumn(){  
+  const busqueda = () => {
+    let indice= indexTag();
+    if(indice ==0){
+      window.alert('No es un tag válido');
+      return;
+    }
+    window.location.href = "http://localhost:5173/tag/" + indice;
+  }; 
     return(
         <div class="rigthColumn">
             <div class="columnside">
           <div class="containerTags">
             <div>Buscar por Tag</div>
             <div class="barraBuscarTag">
-              <input type="text" placeholder="Search Tags..." name="search"/>
-              <button type="submit">
-                <i class="fa fa-search"></i>
-              </button>
+              <ListTags/>             
+              <i class="fa fa-search" onClick={busqueda}></i>
             </div>
+            
             <div class="tags">
-              <a href="">Calculo</a>
-              <a href="">Topicos</a>
-              <a href="">Mitac</a>
-              <a href="">Ing. de Sistemas</a>
-              <a href="">Otros</a>
-              <a href="">Ing. de Sistemas</a>
-
+              <a href="http://localhost:5173/tag/2">Calculo </a>
+              <a href="http://localhost:5173/tag/1">Ing. de Sistemas </a>
+              <a href="http://localhost:5173/tag/3">Programacion </a>
             </div>
-
           </div>
           <div class="containerPreguntas">
             <div class="preguntasFrecuentas">Preguntas Frecuentes</div>

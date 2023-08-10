@@ -1,12 +1,17 @@
 import { LeftColumn } from "../components/LeftColumn";
 import { MidColumn } from "../components/MidColumn";
 import { RigthColumn } from "../components/RigthColumn";
+import { useParams } from "react-router-dom";
 
 export function BodyPage(props){
+    if(props.do){
+        window.location.href="http://localhost:5173/";
+    }
+    const params= useParams();
     return(
         <div class="cuerpo">
             <LeftColumn/>
-            <MidColumn mod={props.mod}/>
+            <MidColumn mod={props.mod} tag={params.id} titulo={params.titulo}/>
             <RigthColumn/>
         </div>
     );

@@ -1,32 +1,48 @@
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import axios from 'axios'
 import { useNavigate, useParams } from "react-router-dom";
 import '../static/css/login.css'
 
 export function LoginPage() {
-    const {register, handleSubmit, formState:{errors}, setValue}= useForm();
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
     const navigate= useNavigate();
-    const params= useParams();
 
-    const onSubmit = handleSubmit(async data => {
-        navigate('/post');
-    })
+    const handleLogin = async () => {
+        try {
+          const response = await axios.post('http://127.0.0.1:8000/forUnsa/login_user/', {
+            email: email,
+            password: password
+          });
+          localStorage.setItem('user_email', response.data.email)
+          setTimeout(() => {
+            navigate('/post'); // Redirige a la otra página
+          }, 600);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
 
     return(
         <div>     
-            <div class="loginBackground">
+            <div className="loginBackground">
                 <img src="src/static/images/login-background.jpg" width="100%" height="100%" alt=""/>
             </div>
-            <form action="" onSubmit={onSubmit}>
-                <div class="login">
+                <div className="login">
                     <h3>Bienvenido</h3>
                     <p><strong>"Un lugar para compartir conocimientos"</strong></p>
                     <img src="src/static/images/unsa.jpg" width="40%" height="40%" alt=""/>
                     <h1></h1>
+                    <label>Correo Institucional: </label>
+                    <input type="email" id='email' name='email' placeholder='...@unsa.edu.pe' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <br></br>
+                    <label>Contraseña: </label>
+                    <input type="password" id='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/> 
+                    <br></br>
                     <div class="buttonLogin"></div>
-                    <button>Acceder con cuenta institucional</button>
+                    <button onClick={handleLogin}>Iniciar Sesión</button>
                     <p><a href="/register">¿Aún no tiene una cuenta?</a></p>
                 </div>
-            </form>
         </div>
     )
 }

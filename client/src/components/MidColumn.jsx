@@ -1,33 +1,55 @@
 import { ListPost} from "./ListPost";
-import { ListSocialPost } from "./ListSocialPost";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChangeTags } from "../static/js/main.js";
+import ModalComponent from "./ModalComponent"
 
 export function MidColumn(props){
-  useEffect(() => {
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
+  useEffect(() => {    
+    if(props.titulo){
+      console.log(props.titulo)
+      document.getElementsByName("search")[0].value = props.titulo;
+    }
     ChangeTags();
   }, []);
-
+  //{props.mod ? <ListSocialPost /> : <ListPost />}
   const navigate= useNavigate()
     return(
-        <div class="midColumn" data-mod={props.mod}>
+        <div class="midColumn" id="mid" data-mod={props.mod}>
           <div class="midcolumHeader">
             <div class="topMedio">
               <div>Mi escuela</div>
               <div>Todos</div>
             </div>
             <div class="subTopMedio">
-              <div>Popular</div>
-              <div>Nuevos</div>
-              <div onClick={()=>{
-                navigate('/post-create/')
-            }}
-            >Nuevo Post</div>
+              <div><a href="http://localhost:5173/popular/" >Popular</a></div>
+              <div><a href="http://localhost:5173/" >Nuevos</a></div>
+              {localStorage.getItem('user_email') === null ? (
+                <div>
+                  <div onClick={handleShow}>Nuevo Post</div>
+                  <ModalComponent
+                    show={showModal}
+                    onHide={handleClose}
+                    title="Inicie sesión"
+                    content="This is the content of the modal."
+                  />
+                </div>
+                ) : (
+                  // Mostrar esta porción después del registro
+                  <div onClick={()=>{
+                    navigate('/post-create/')
+                  }}
+                  >Nuevo Post</div>
+              )}
+              
             </div>
           </div>
           <div class="botMedio">
-            {props.mod ? <ListSocialPost /> : <ListPost />}
+            <ListPost mod={props.mod} tag={props.tag} titulo={props.titulo}/>
           </div>
         </div>
     );

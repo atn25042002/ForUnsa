@@ -1,14 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAll, getOnly } from "../api/jspost";
+import { like } from "../static/js/main.js";
 import '../static/css/tarjeta.css'
+import { TarjetaComentario } from "./TarjetaComentario";
 
-export function TarjetaPost({post}) {
+export function TarjetaPost(props) {
+    let post= props.post
     const navigate= useNavigate()
     const fecha = new Date(post.updated_at);
     const fechaFormateada = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric',hour: 'numeric', minute: 'numeric' });
     const imagen = post.img;
     const pdf= post.file;
+
+    const onClickLike = () => {
+      like(post.id)
+    };
 
     const [datos, setDatos]= useState([]);
     useEffect (() => {
@@ -17,6 +24,28 @@ export function TarjetaPost({post}) {
         setDatos(res.data);
       }
       loadDatos();
+    }, []);
+
+    const [coms, setComs]= useState([]);
+
+    useEffect (() => {
+        async function loadComms(){
+            const res = await getAll('comment');
+            const ord = [...res.data].filter(item => item.posted_on === post.id);
+            setComs(ord);
+        }
+        loadComms();
+    }, []);
+
+    const [users, setUsers]= useState([]);
+
+    useEffect (() => {
+        async function loadUsers(){
+            const res = await getAll('user');
+            const ord = [...res.data];
+            setUsers(ord);
+        }
+        loadUsers();
     }, []);
 
     return(
@@ -62,20 +91,24 @@ export function TarjetaPost({post}) {
             <div class="postContainerf6">
               <br />
               <i class="fas fa-file-pdf pdf-icon"></i>
-              <a href={pdf}>{pdf.substring(33)}</a>
+              <a href={pdf} target="_blank">{decodeURIComponent(pdf.substring(33))}</a>
             </div>}
             <div class="postContainerf5">
               <div class="likes">
-                <i class="fa-regular fa-thumbs-up"></i>
-                <div class="likescount">{post.likes_count}</div>
+                <i class="fa-regular fa-thumbs-up" onClick={onClickLike}></i>
+                <div class="likescount" id={"lk" + post.id}>{post.likes_count}</div>
                 <i class="fa-regular fa-thumbs-down"></i>
-                <div class="dislikescount">{post.dislikes_count}</div>
+                <div class="dislikescount" id={"dlk" + post.id} >{post.dislikes_count}</div>
               </div>
               <div class="derechaLike">
                 <i class="fa-regular fa-comment-dots"></i>
                 <div>Ver {post.comments_count} comentarios</div>
                 <i class="fa-regular fa-bookmark"></i>
               </div>
+            </div>
+
+            <div class="comentarios">
+                <ListComentarios coms={coms} users={users} />
             </div>
         </div>
     );
@@ -97,7 +130,19 @@ export function ListTags({tags,id}){
   return (
       <div class="containerTags">
           {tags.map( tag => (
-              <div key={tag + id} class="tags"><a class="numtag" href="#">{tag}</a></div>
+              <div key={tag + id} class="tags"><a class="numtag" href={"http://localhost:5173/tag/" + tag}>{tag}</a></div>
+          ))}
+      </div>
+  );
+}
+
+export function ListComentarios({coms}){
+  return (
+      <div class="containerTags">
+          {coms.map( com => (
+              <div key={com.id} class="Contentcomment">
+                <TarjetaComentario com={com} />
+              </div>
           ))}
       </div>
   );
