@@ -22,12 +22,12 @@ export function MidColumn(props){
         <div class="midColumn" id="mid" data-mod={props.mod}>
           <div class="midcolumHeader">
             <div class="topMedio">
-              <div>Mi escuela</div>
-              <div>Todos</div>
+              <div><a href="/tag/1" >Mi escuela</a></div>
+              <div><a href="/all/" >Todos</a></div>
             </div>
             <div class="subTopMedio">
-              <div><a href="http://localhost:5173/popular/" >Popular</a></div>
-              <div><a href="http://localhost:5173/" >Nuevos</a></div>
+              <div><a href="/popular/" >Popular</a></div>
+              <div><a href="/" >Nuevos</a></div>
               {localStorage.getItem('user_id') === null ? (
                 <div>
                   <div onClick={handleShow}>Nuevo Post</div>

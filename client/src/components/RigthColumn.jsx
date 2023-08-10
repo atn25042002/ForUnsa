@@ -8,7 +8,7 @@ export function RigthColumn(){
       window.alert('No es un tag válido');
       return;
     }
-    window.location.href = "http://localhost:5173/tag/" + indice;
+    window.location.href ="/tag/" + indice;
   }; 
     return(
         <div class="rigthColumn">
@@ -21,9 +21,9 @@ export function RigthColumn(){
             </div>
             
             <div class="tags">
-              <a href="http://localhost:5173/tag/2">Calculo </a>
-              <a href="http://localhost:5173/tag/1">Ing. de Sistemas </a>
-              <a href="http://localhost:5173/tag/3">Programacion </a>
+              <a href="/tag/2">Calculo </a>
+              <a href="/tag/1">Ing. de Sistemas </a>
+              <a href="/tag/3">Programacion </a>
             </div>
           </div>
           <div class="containerPreguntas">

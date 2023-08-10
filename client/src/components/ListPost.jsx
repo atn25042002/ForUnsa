@@ -27,6 +27,10 @@ export function ListPost(props){
                     setPosts(filt);
                     return;
                 }
+                if(props.mod == "all"){
+                    setPosts(ord);
+                    return;
+                }
                 mode= 1 //modo social
             }
             filt = ord.filter(item => item.post_type === mode && item.state=="A");

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 export function BodyPage(props){
     if(props.do){
-        window.location.href="http://localhost:5173/";
+        window.location.href="/";
     }
     const params= useParams();
     return(

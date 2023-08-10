@@ -19,6 +19,7 @@ function App({logeado}){
             <Route path="/post" element={<BodyPage />}></Route>
             <Route path="/social" element={<BodyPage mod="social" />}></Route>
             <Route path="/popular" element={<BodyPage mod="popular"/>}></Route>
+            <Route path="/all" element={<BodyPage mod="all"/>}></Route>
             <Route path="/post/:id" element={<PostFormPage />}></Route>
             <Route path="/post-create" element={<PostFormPage />}></Route>
             <Route path="/login" element={<LoginPage />}></Route>

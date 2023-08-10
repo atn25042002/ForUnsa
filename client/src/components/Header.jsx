@@ -3,6 +3,7 @@ import '../static/css/Dropdown.css';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ModalComponent from "./ModalComponent"
+import { ruta } from "../api/jspost.js";
 
 export function Header() {
      
@@ -30,7 +31,7 @@ export function Header() {
   };
   const busqueda = () => {
     let cadena= document.getElementsByName("search")[0].value;
-    window.location.href = "http://localhost:5173/search/" + cadena;
+    window.location.href ="/search/" + cadena;
   };
 
     return(
@@ -38,7 +39,7 @@ export function Header() {
             <div class="headerChild">
                 <div class="logo">
                     <div class="LogoForUnsa">
-                        <a href="http://localhost:5173/">
+                        <a href="/">
                             <img src={logo} width="70px" alt="logo ForUnsa" />
                         </a>
                     </div>
@@ -54,7 +55,7 @@ export function Header() {
             <div class="iconos">
                 <div class="interiorIcones">
                   <div class="i">
-                      <a href="http://localhost:5173/">
+                      <a href="/">
                       <i class="fa-solid fa-house hover-effect d-none d-md-inline"></i>
                       </a>                    
                   </div>
@@ -62,7 +63,7 @@ export function Header() {
                       <i class="fa-regular fa-circle-question"></i>
                   </div>
                   <div class="i">
-                      <a href="http://localhost:5173/social">
+                      <a href="/social">
                       <i class="fa-solid fa-user-group hover-effect  d-none d-md-inline"></i>
                       </a>
                   </div>

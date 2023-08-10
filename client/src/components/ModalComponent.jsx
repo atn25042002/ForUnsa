@@ -72,7 +72,7 @@ function ModalComponent({ show, onHide, title, onSubmit }) {
           <br/>
         </Modal.Footer>        
           <div class="modalregister">
-              <a href="http://localhost:5173/register">
+              <a href="/register">
                 <Button variant="primary" className="modal-footer-register">
                   No tengo una cuenta
                 </Button>
