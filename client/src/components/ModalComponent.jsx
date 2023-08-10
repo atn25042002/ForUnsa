@@ -40,7 +40,8 @@ function ModalComponent({ show, onHide, title, onSubmit }) {
         <Modal.Body>
           <Form>
             <Form.Group controlId="email">
-              <Form.Control
+              <div>Nombre de Usuario:</div>
+              <Form.Control className='forminput'
                 type="email"
                 name="email"
                 value={formData.email}
@@ -49,7 +50,8 @@ function ModalComponent({ show, onHide, title, onSubmit }) {
               />
             </Form.Group> 
             <Form.Group controlId="password">
-              <Form.Control
+              <div>Contraseña:</div>
+              <Form.Control className='forminput'
                 type="password"
                 name="password"
                 value={formData.password}
@@ -66,7 +68,15 @@ function ModalComponent({ show, onHide, title, onSubmit }) {
           <Button variant="primary" className="modal-footer-submit" onClick={handleLogin}>
             Iniciar Sesión
           </Button>
-        </Modal.Footer>
+          <br/>
+        </Modal.Footer>        
+          <div class="modalregister">
+              <a href="http://localhost:5173/register">
+                <Button variant="primary" className="modal-footer-register">
+                  No tengo una cuenta
+                </Button>
+              </a>
+          </div>
       </div>
     </Modal>
   );
