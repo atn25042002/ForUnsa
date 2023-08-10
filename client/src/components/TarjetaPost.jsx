@@ -4,8 +4,13 @@ import { getAll, getOnly } from "../api/jspost";
 import { like } from "../static/js/main.js";
 import '../static/css/tarjeta.css'
 import { TarjetaComentario } from "./TarjetaComentario";
+import ModalComponent from "./ModalComponent"
 
 export function TarjetaPost(props) {
+    const [showModal, setShowModal] = useState(false);
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
+
     let post= props.post
     const navigate= useNavigate()
     const fecha = new Date(post.updated_at);
@@ -59,13 +64,27 @@ export function TarjetaPost(props) {
                   <div class="topicoCurso">
                     {post.title}
                   </div>
-                  <div class="topicoTresPuntos" 
-                    onClick={()=>{
-                        navigate('/post/' + post.id)
-                    }}
-                    >
-                    <i class="fa-solid fa-ellipsis"></i>
-                  </div>
+                  {localStorage.getItem('user_email') === null ? (
+                    <div>
+                      <div class="topicoTresPuntos">
+                        <i class="fa-solid fa-ellipsis" onClick={handleShow}></i>
+                        <ModalComponent
+                        show={showModal}
+                        onHide={handleClose}
+                        title="Inicie sesión"
+                        content="This is the content of the modal."
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div class="topicoTresPuntos" 
+                      onClick={()=>{
+                          navigate('/post/' + post.id)
+                      }}
+                      >
+                      <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                  )}
                 </div>
                 <div class="NombreFecha">
                   <div class="nombre">

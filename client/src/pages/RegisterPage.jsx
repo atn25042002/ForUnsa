@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { ruta } from "../api/jspost.js";
 
 export function RegisterPage() {
     const navigate = useNavigate();  
@@ -15,11 +16,12 @@ export function RegisterPage() {
     
     const handleRegister = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/forUnsa/register_user/', {
+        const response = await axios.post(ruta + 'register_user/', {
           username: username,
           password: password,
           email: email,
         });
+        console.log(response.data.registration_code);
         setRegistrationCode(response.data.registration_code);
         setRegistrationCompleted(true);
       } catch (error) {
@@ -29,7 +31,7 @@ export function RegisterPage() {
   
     const handleCompleteRegistration = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/forUnsa/complete_registration/', {
+        const response = await axios.post( ruta + 'complete_registration/', {
           email: email,
           registrationCode: inputCode,
         });

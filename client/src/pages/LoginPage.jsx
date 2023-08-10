@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import { useNavigate, useParams } from "react-router-dom";
 import '../static/css/login.css'
+import { ruta } from "../api/jspost.js";
 
 export function LoginPage() {
     const [password, setPassword] = useState('');
@@ -10,7 +11,7 @@ export function LoginPage() {
 
     const handleLogin = async () => {
         try {
-          const response = await axios.post('http://127.0.0.1:8000/forUnsa/login_user/', {
+          const response = await axios.post(ruta + 'login_user/', {
             email: email,
             password: password
           });

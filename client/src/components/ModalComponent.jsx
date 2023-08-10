@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import { Modal, Button, Form } from 'react-bootstrap';
 import '../static/css/ModalComponent.css'; 
+import { ruta } from "../api/jspost.js";
 
 function ModalComponent({ show, onHide, title, onSubmit }) {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ function ModalComponent({ show, onHide, title, onSubmit }) {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/forUnsa/login_user/', {
+      const response = await axios.post(ruta + 'login_user/', {
         email: formData.email,
         password: formData.password
       });
@@ -40,7 +41,7 @@ function ModalComponent({ show, onHide, title, onSubmit }) {
         <Modal.Body>
           <Form>
             <Form.Group controlId="email">
-              <div>Nombre de Usuario:</div>
+              <div>Email:</div>
               <Form.Control className='forminput'
                 type="email"
                 name="email"
