@@ -8,7 +8,6 @@ export function ListTags(){
         async function loadTags(){
             const res = await getAll('tag');
             const ord = [...res.data].sort((a, b) => new Date(a.id) - new Date(b.id));
-            console.log(ord)
             setTags(ord);
         }
         loadTags();

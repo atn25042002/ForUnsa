@@ -137,6 +137,7 @@ export function ListTags({tags,id}){
 }
 
 export function ListComentarios({coms}){
+  if (coms.length > 0)
   return (
       <div class="containerTags">
           {coms.map( com => (

@@ -10,7 +10,6 @@ export function ListPost(props){
             const res = await getAll('post');
             const ord = [...res.data].sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
             let filt, mode;
-            console.log(props.titulo)
             if(props.tag){
                 filt= ord.filter(item => item.tags[0] == props.tag);
                 setPosts(filt);
